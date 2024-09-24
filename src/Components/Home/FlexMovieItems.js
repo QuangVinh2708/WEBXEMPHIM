@@ -1,6 +1,6 @@
-import React from 'react'
-import {FaRegCalendarAlt} from 'react-icons/fa'
-import {BiTime} from 'react-icons/bi'
+import React from 'react';
+import {FaRegCalendarAlt} from 'react-icons/fa';
+import {BiTime} from 'react-icons/bi';
 
 function FlexMovieItems({movie}) {
   return (
