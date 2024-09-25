@@ -2,7 +2,7 @@ export const Movies = [
     {
         name:"Army of the dead",
         desc:"Lorem ipsum dolor sit",
-        titleImage:"toy.jpg",
+        titleImage:"https://res.cloudinary.com/dwfmpiozq/image/upload/v1724889779/comics/tkw5qpdcgyrbvpm0fvrx.jpg",
         image:'https://res.cloudinary.com/dwfmpiozq/image/upload/v1724889779/comics/tkw5qpdcgyrbvpm0fvrx.jpg',
         category:'Western',
         language:'English',
@@ -22,7 +22,7 @@ export const Movies = [
         year:'2022',
         time:'3hr',
         video:'',
-        rate:3.4,
+        rate:3.5,
         reviews:23,
     },
     {

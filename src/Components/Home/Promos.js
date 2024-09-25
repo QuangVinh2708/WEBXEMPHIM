@@ -26,7 +26,7 @@ function Promos() {
                     </div>
                 </div>
                 <div>
-                    <img src="/Image/toy.jpg" 
+                    <img src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1727195281/Android_Collage_1920_vyw2zz.jpg" 
                     alt="Mobie app" 
                     className='w-full object-contain' 
                     />

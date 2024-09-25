@@ -1,7 +1,7 @@
 import React from 'react';
-import Titles from './Titles';
+import Titles from '../Titles';
 import {BsCollectionFill} from 'react-icons/bs';
-import Movie from './Movie';
+import Movie from '../Movie';
 import {Movies} from '../../Data/MovieData';
 
 function PopularMovies() {
