@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import CategoriesData from '../Data/CategoriesDta'
+import { Listbox } from '@headlessui/react'
 const YearData = [
   {title: "Sort By Year"},
   {title: "1700 - 1800"},
@@ -36,10 +37,42 @@ function Filters() {
     {
       value: category,
       onChange: setCategory,
-    }
+      items: CategoriesData,
+    },
+    {
+      value: year,
+      onChange: setYear,
+      items: YearData,
+    },
+    {
+      value: times,
+      onChange: setTimes,
+      items: TimesData,
+    },
+    {
+      value: rates,
+      onChange: setRates,
+      items: RatesData,
+    },
+    
   ]
   return (
-    <div></div>
+    <div className='my-6 bg-dry border text-dryGray border-gray-800 grid md:grid-cols-4 grid-cols-2 lg:gap-12 gap-2 rounded p-6'>
+      {
+        Filter.map((item,index) =>(
+          <Listbox key = {index} value={item.value} onChange={item.onChange}>
+              <div className='relative'>
+                <Listbox.Button className="relative border border-gray-800  text-white text-left bg-main rounded-lg cursor-default py-4 pl-6 pr-10 text-xs">
+                  <span className='block truncate'>{item.value.title}</span>
+                    <span className='absolute inset-y-0 right-0 flex items-center pointer-events-none pr-2'>
+                      
+                    </span>
+                </Listbox.Button>
+              </div>
+          </Listbox>
+        ))
+      }
+    </div>
   )
 }
 
