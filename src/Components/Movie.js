@@ -7,10 +7,10 @@ function Movie({ movie }) {
 
   return (
     <div className="border border-border p-1 hover:scale-95 transitions relative rounded overflow-hidden">
-      <Link to={`/${encodeURIComponent(movie.name)}`} className="w-full">
+      <Link to={`/movie/${movie?.name}`} className="w-full">
         <img 
-          src={movie.image} 
-          alt={movie.name} 
+          src={`/images/movie/${movie?.name}`}
+          alt={movie?.name} 
           className="w-full h-64 object-cover" 
         />
       </Link>
