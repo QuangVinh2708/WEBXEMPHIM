@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
-import CategoriesData from "../Data/CategoriesDta";
-import { Listbox, Transition } from "@headlessui/react";
+import CategoriesData from "../Data/CategoriesData"; // Fixed the import
+import { Listbox,ListboxOption,ListboxOptions,ListboxButton, Transition } from "@headlessui/react";
 import { FaAngleDown, FaCheck } from "react-icons/fa";
 
 const YearData = [
@@ -89,17 +89,16 @@ function Filters() {
                     {({ selected }) => (
                       <>
                         <span
-                          className={`block truncate ${selected ? "font-semibold" : "font-normal"}`}
+                          className={`block truncate ${
+                            selected ? "font-semibold" : "font-normal"
+                          }`}
                         >
                           {iterm.title}
                         </span>
 
                         {selected ? (
                           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <FaCheck
-                              className="h-3 w-3"
-                              aria-hidden="true"
-                            ></FaCheck>
+                            <FaCheck className="h-3 w-3" aria-hidden="true" />
                           </span>
                         ) : null}
                       </>

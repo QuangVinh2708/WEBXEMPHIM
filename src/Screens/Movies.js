@@ -2,12 +2,12 @@ import React,{useState}from "react";
 import Layout from "../Layout/Layout";
 import Filters from "../Components/Filters";
 import Movie from "../Components/Movie";
-import { Movie } from "../Data/MovieData";
+import { Movies } from "../Data/MovieData";
 import { CgSpinner } from "react-icons/cg";
 
 function MoviesPage() {
   const maxpage = 10;
-  const [page, setPage] = useState(maxPage);
+  const [page, setPage] = useState(maxpage);
   const HandleLoadingMore = () => {
     setPage(page + maxpage);
   };
@@ -17,11 +17,11 @@ function MoviesPage() {
       <div className="min-height-screen container mx-auto px-2 my-6">
         <Filters />
         <p className="text-lg front-medium my-6">
-          Total <span className="front-bold text-subMain">{Movie?.length}</span>
+          Total <span className="front-bold text-subMain">{Movies?.length}</span>
           {""}items Found
         </p>
         <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
-          {Movie.slice(0,page)?.map((movie, index) => (
+          {Movies.slice(0,page)?.map((movie, index) => (
             <Movie key={index} movie={movie} />
           ))}
         </div>
