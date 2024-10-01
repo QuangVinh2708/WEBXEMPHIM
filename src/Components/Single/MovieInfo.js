@@ -1,5 +1,5 @@
 import React from 'react';
-import FlexMovieItems from './MovieInfo';
+import FlexMovieItems from './FlexMovieItems';
 
 
 function MovieInfo({ movie }) {
