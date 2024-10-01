@@ -5,7 +5,7 @@ import {Swiper,SwiperSlide } from 'swiper/react'
 import Titles from '../Titles'
 import {UserDate} from '../Data/MovieData';
 
-UserDate
+
 function MovieCasts() {
     return (
         <div className='my-12'>
