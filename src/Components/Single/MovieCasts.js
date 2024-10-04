@@ -38,7 +38,7 @@ function MovieCasts() {
                     {UserDate.map((user,i) =>(
                             <SwiperSlide key={i}>
                                 <div className='w-full p-3 italic text-xs text-teal-50 rounded flex-colo bg-dry border border-gray-800'>
-                                    <img src={`${user.image}`} alt={user.name} className='w-full h-64 object-cover rounded mb-4'/>
+                                    <img src={`${user.image}`} alt={user.fullName} className='w-full h-64 object-cover rounded mb-4'/>
                                 <p>{user?.fullName}</p>
                                 </div> 
                             </SwiperSlide>
