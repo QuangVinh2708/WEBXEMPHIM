@@ -7,7 +7,7 @@ import MovieCasts from '../Components/Single/MovieCasts'
 import MovieRates from '../Components/Single/MovieRates';
 import Titles from '../Components/Titles';
 import Movie from '../Components/Movie';
-
+import { BsCollectionFill } from 'react-icons/bs';
 function SingleMovie() {
     const { id } = useParams(); // Get id from URL params
     const movie = Movies.find((movie) => movie.name === id); // Use appropriate comparison if id is a number

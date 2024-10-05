@@ -9,11 +9,11 @@ function Login() {
   return (
     <Layout>
         <div className="container mx-auto px-2 my-24 flex-colo">
-            <div className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:2-3/5 bg-dry rounded-lg border-border">
+            <div className="w-full  2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:2-3/5 bg-dry rounded-lg border-border">
                 <img 
-                    src="/images/logo.png"
+                    src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1726675657/Logo_xun4sb.png"
                     alt="logo"
-                    className="w-full h-12 object-contain"
+                    className="w-full h-20 object-contain"
                 />
                 <Input 
                     label="Email" 
