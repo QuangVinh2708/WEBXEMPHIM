@@ -14,27 +14,32 @@ import 'swiper/css/autoplay';
 function TopRated() {
     const [nextEl, setNextEl] = useState(null);
     const [prevEl, setPrevEl] = useState(null);
-    const classNames = 
-    'hover:br-dry transitions text-sm rounded w-8 h-8 flex-colo bg-subMain text-white'
+    const classNames =
+        'hover:br-dry transitions text-sm rounded w-8 h-8 flex-colo bg-subMain text-white'
 
     return (
         <div className='my-16'>
             <Titles title='Top Rated' Icon={BsBookmarkStarFill} />
             <div className="mt-10">
                 <Swiper
-                    navigation={{ nextEl, prevEl }} 
-                    slidesPerView={4} 
-                    spaceBetween={40} 
-                    autoplay={{ delay: 3000 }} 
+                    navigation={{ nextEl, prevEl }}
+
+                    autoplay={{ delay: 3000 }}
                     speed={1000}
                     loop={true}
                     modules={[Navigation, Autoplay]}
+                    breakpoints={{
+                        0: {slidesPerView: 1,spaceBetween: 10 },
+                        768: { slidesPerView: 2, spaceBetween: 20 },
+                        1024: { slidesPerView: 3, spaceBetween: 30 },
+                        1280: { slidesPerView: 4, spaceBetween: 40 },
+                    }}
                 >
                     {
                         Movies.map((movie, index) => (
                             <SwiperSlide key={index}>
                                 <div className="relative p-4 h-rate hovered border border-border bg-dry rounded-lg overflow-hidden">
-                                    <img 
+                                    <img
                                         src={`${movie.titleImage}`}
                                         alt={movie.name}
                                         className="w-full h-full object-cover rounded-lg"
@@ -43,7 +48,7 @@ function TopRated() {
                                         <button className="w-12 h-12 flex justify-center items-center rounded-full bg-white bg-opacity-30 text-white hover:bg-subMain transition-all duration-300">
                                             <FaHeart />
                                         </button>
-                                        <Link 
+                                        <Link
                                             className="font-semibold text-xl text-white truncate w-full"
                                             to={`/movie/${movie.name}`}
                                         >

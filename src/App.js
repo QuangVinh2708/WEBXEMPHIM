@@ -13,8 +13,13 @@ import Register from './Screens/Register';
 import Profile from './Screens/Dashboard/Profile';
 import Password from './Screens/Dashboard/Password';
 import FavoritesMovies from './Screens/Dashboard/FavoritesMovie';
-import SideBar from './Screens/Dashboard/SideBar';
 import Dashboard from './Screens/Dashboard/Admin/Dashboard';
+import MoviesList from './Screens/Dashboard/Admin/MovieList';
+import Users from './Screens/Dashboard/Admin/Users';
+import Categories from './Screens/Dashboard/Admin/Categories';
+import AddMovie from './Screens/Dashboard/Admin/AddMovie';
+
+
 
 function App(){
   Aos.init();
@@ -31,9 +36,12 @@ function App(){
       <Route path='/profile' element={<Profile />}/>
       <Route path='/password' element={<Password />}/>
       <Route path='/favorites' element={<FavoritesMovies />}/>
-      <Route path='/movieslist' element={<MovieList />}/>
+      <Route path='/movieslist' element={<MoviesList />}/>
       <Route path='/dashboard' element={<Dashboard />}/>
+      <Route path='/categories' element={<Categories />}/>
       <Route path='/users' element={<Users />}/>
+      <Route path='/addmovie' element={<AddMovie />}/>
+
       <Route path='*' element={<NotFound/>}/>
 
 

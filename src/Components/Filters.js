@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import CategoriesData from "../Data/CategoriesData"; // Fixed the import
-import { Listbox,ListboxOption,ListboxOptions,ListboxButton, Transition } from "@headlessui/react";
+import { Listbox, Transition } from "@headlessui/react";
 import { FaAngleDown, FaCheck } from "react-icons/fa";
 
 const YearData = [
@@ -63,21 +63,21 @@ function Filters() {
       {Filter.map((item, index) => (
         <Listbox key={index} value={item.value} onChange={item.onChange}>
           <div className="relative">
-            <ListboxButton className="relative border border-gray-800 w-full text-white text-left bg-main rounded-lg cursor-default py-4 pl-6 pr-10 text-left text-xs">
+            <Listbox.Button className="relative border border-gray-800 w-full text-white text-left bg-main rounded-lg cursor-default py-4 pl-6 pr-10 text-left text-xs">
               <span className="block truncate">{item.value.title}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pointer-events-none pr-2">
                 <FaAngleDown className="h-4 w-4" aria-hidden="true" />
               </span>
-            </ListboxButton>
+            </Listbox.Button>
             <Transition
               as={Fragment}
               leave="transition ease-in duration-100"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <ListboxOptions className="absolute z-10 mt-1 w-full bg-white border-gray-800 text-dryGray rounded-md shadow-lg max-h-60 py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
+              <Listbox.Options className="absolute z-10 mt-1 w-full bg-white border-gray-800 text-dryGray rounded-md shadow-lg max-h-60 py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
                 {item.items.map((iterm, i) => (
-                  <ListboxOption
+                  <Listbox.Option
                     key={i}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
@@ -103,9 +103,9 @@ function Filters() {
                         ) : null}
                       </>
                     )}
-                  </ListboxOption>
+                  </Listbox.Option>
                 ))}
-              </ListboxOptions>
+              </Listbox.Options>
             </Transition>
           </div>
         </Listbox>

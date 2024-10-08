@@ -6,7 +6,7 @@ const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase";
 const Text = "text-sm text-left leading-6 whitespace-nowrap px-5 py-3";
 
 // rows
-const Rows = (data, i, users) => {
+const Rows = (data, i, users, OnEditFunction) => {
     return (
         <tr key={i}>
             {/* users */}
@@ -21,8 +21,8 @@ const Rows = (data, i, users) => {
                             />
                         </div>
                     </td>
-                    <td className={`${Text}`}>{ data._id ? data._id:"2R75T8"}</td>
-                    <td className={`${Text}`}>{data.CreateAT ? data.CreateAT : "12, Jan 2023"}</td>
+                    <td className={`${Text}`}>{data._id ? data._id : "2R75T8"}</td>
+                    <td className={`${Text}`}>{data.createAt ? data.createAt : "12, Jan 2023"}</td>
                     <td className={`${Text}`}>{data.fullName}</td>
                     <td className={`${Text}`}>{data.email}</td>
                     <td className={`${Text} float-right flex gap-2`}>
@@ -34,18 +34,16 @@ const Rows = (data, i, users) => {
             ) : (
                 // categories
                 <>
-                    <td className={`${Text} font-bold`}>
-                        {data._id ? data._id : "2R75T8"}
-                    </td>
-                    <td className={`${Text}`}>
-                        {data.CreateAT ? data.CreateAT : "12, Jan 2023"}
-                    </td>
+                    <td className={`${Text} font-bold`}>{data._id ? data._id : "2R75T8"}</td>
+                    <td className={`${Text}`}>{data.createAt ? data.createAt : "12, Jan 2023"} </td>
                     <td className={`${Text}`}>{data.title}</td>
                     <td className={`${Text} float-right flex gap-2`}>
-                        <button className="border border-border bg-dry flex gap-2 text-border rounded py-1 px-2">
-                            Edit <FaEdit className="text-green-500" />
+                        <button
+                            onClick={() => OnEditFunction(data)}
+                            className="border border-border bg-dry flex gap-2 text-border rounded py-1 px-2">
+                            Edit <FaEdit className="text-green-500 w-4 h-4" />
                         </button>
-                        <button className="bg-subMain text-white rounded flex-colo w-6 h-6">
+                        <button className="bg-subMain text-white rounded flex-colo w-8 h-8">
                             <MdDelete />
                         </button>
                     </td>
@@ -56,7 +54,7 @@ const Rows = (data, i, users) => {
 };
 
 // table
-function Table2({ data, users }) {
+function Table2({ data, users, OnEditFunction }) {
     return (
         <div className="overflow-x-scroll overflow-hidden relative w-full">
             <table className="w-full table-auto border border-border divide-y divide-border">
@@ -73,14 +71,15 @@ function Table2({ data, users }) {
                         ) : (
                             <>
                                 <th scope="col" className={`${Head}`}>Id</th>
+                                <th scope="col" className={`${Head}`}>Date</th>
                                 <th scope="col" className={`${Head}`}>Title</th>
                             </>
                         )}
-                        <th scope="col" className={`${Head}`}>Actions</th>
+                        <th scope="col" className={`${Head} text-end`}>Actions</th>
                     </tr>
                 </thead>
                 <tbody className='bg-main divide-y divide-gray-800'>
-                    {data.map((data, i) => Rows(data, i, users))}
+                    {data.map((data, i) => Rows(data, i, users, OnEditFunction))}
                 </tbody>
             </table>
         </div>

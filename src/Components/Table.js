@@ -1,8 +1,8 @@
 import React from 'react';
 import{FaCloudDownloadAlt, FaEdit} from 'react-icons/fa';
-import{MdDelete} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import{GoEye} from 'react-icons/go';
+import { MdDelete } from 'react-icons/md';
 
 
 const Head = "text-xs text-left text-main font-semibold px-6 py-2 uppercase";
@@ -31,7 +31,7 @@ const Rows = (movie, i, admin) => {
                         <button className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
                     Edit<FaEdit className="text-green-500"/>
                 </button>
-                <button className="bg-subMain text-white  rounded flex-colo w-6 h-6 ">
+                <button className="bg-subMain text-white  rounded flex-colo w-8 h-8 ">
                     <MdDelete/>
                 </button>
                         </>
@@ -41,7 +41,7 @@ const Rows = (movie, i, admin) => {
                         <button className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
                     Download <FaCloudDownloadAlt className="text-green-500"/>
                 </button>
-                <Link to={'/movie/${movie?.name}'} className="bg-subMain text-white  rounded flex-colo w-6 h-6 ">
+                <Link to={`/movie/${movie?.name}`} className="bg-subMain text-white  rounded flex-colo w-6 h-6 ">
                     <GoEye/>
                 </Link>
                         </>

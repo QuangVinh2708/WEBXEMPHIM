@@ -1,7 +1,7 @@
 import React from 'react';
-import SideBar from './SideBar';
-import Table from '../../Components/Table';
-import { Movies } from '../../Data/MovieData';
+import SideBar from '../SideBar';
+import Table from '../../../Components/Table';
+import { Movies } from '../../../Data/MovieData';
 
 function MoviesList() {
     return (

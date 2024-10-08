@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@headlessui/react": "^2.1.8",
+    "@headlessui/react": "1.7",
     "@heroicons/react": "^2.1.5",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@testing-library/jest-dom": "^5.17.0",
