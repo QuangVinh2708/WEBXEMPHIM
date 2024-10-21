@@ -11,6 +11,7 @@ export const Movies = [
         time: 3,
         video: '',
         rate: 3.4,
+        reviews: 34,
     },
     {
 
@@ -24,6 +25,7 @@ export const Movies = [
         time: 3,
         video: '',
         rate: 3.5,
+        reviews: 34,
     },
     {
         name: "Doremon",
@@ -36,6 +38,7 @@ export const Movies = [
         time: 3,
         video: '',
         rate: 3.4,
+        reviews: 34,
     },
     {
 
@@ -49,6 +52,7 @@ export const Movies = [
         time: 3,
         video: '',
         rate: 3.4,
+        reviews: 34,
     },
     // Add similar entries for the other movies...
 ];
