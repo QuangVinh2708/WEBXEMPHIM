@@ -63,7 +63,7 @@ function Filters() {
       {Filter.map((item, index) => (
         <Listbox key={index} value={item.value} onChange={item.onChange}>
           <div className="relative">
-            <Listbox.Button className="relative border border-gray-800 w-full text-white text-left bg-main rounded-lg cursor-default py-4 pl-6 pr-10 text-left text-xs">
+            <Listbox.Button className="relative border border-gray-800 w-full text-white text-left bg-main rounded-lg cursor-default py-4 pl-6 pr-10 text-xs">
               <span className="block truncate">{item.value.title}</span>
               <span className="absolute inset-y-0 right-0 flex items-center pointer-events-none pr-2">
                 <FaAngleDown className="h-4 w-4" aria-hidden="true" />

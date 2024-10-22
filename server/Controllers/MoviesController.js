@@ -1,4 +1,4 @@
-import { MoviesData } from "../Data/MovieData.js";
+import { Movies } from "../Data/MovieData.js";
 import Movie from "../Models/MoviesModel.js";
 import asyncHandler from "express-async-handler";
 
@@ -11,7 +11,7 @@ const importMovies = asyncHandler(async (req, res) => {
     // first we make sure our Movies table is empty by deleting all documents
     await Movie.deleteMany({});
     // then we insert all movies from MoviesData
-    const movies = await Movie.insertMany(MoviesData);
+    const movies = await Movie.insertMany(Movies);
     res.status(201).json(movies);
 });
 
@@ -33,9 +33,9 @@ const getMovies = asyncHandler(async (req, res) => {
         };
 
 // load more movies functionality
-const page = Number(req.query.pageNumber) || 1;
+const page = Number(req.query.pageNumber) || 1;   // if pageNumber is not provided in query  we set it to 
 const limit = 2;
-const skip = (page - 1) * limit;
+const skip = (page - 1) * limit; // skip 2 movies per page 
 
 // find movies by query, skip and limit
 const movies = await Movie.find(query)
@@ -50,8 +50,8 @@ const count = await Movie.countDocuments(query);
 res.json({ 
     movies, 
     page, 
-    pages: Math.ceil(count / limit), 
-    totalMovies: count
+    pages: Math.ceil(count / limit),  // total number of pages
+    totalMovies: count ,  // total number of movie
  });
 } catch (error) {
   res.status(400).json({ message: error.message});   
