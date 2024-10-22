@@ -10,6 +10,7 @@ export const Movies = [
         time: 6,
         video: '',
         rate: 0.5,
+        reviews: 34,
     },
     {
         name: "Army of the Dead",
@@ -22,6 +23,7 @@ export const Movies = [
         time: 3,
         video: '',
         rate: 3.4,
+        reviews: 34,
     },
     {
         name: "Harry Potter",
@@ -34,6 +36,8 @@ export const Movies = [
         time: 2.5,
         video: '',
         rate: 4.5,
+        reviews: 34,
+
     },
     {
         name: "Doremon",
@@ -46,6 +50,7 @@ export const Movies = [
         time: 2,
         video: '',
         rate: 3.4,
+        reviews: 34,
     },
     {
         name: "The Matrix",
@@ -58,6 +63,7 @@ export const Movies = [
         time: 2.5,
         video: '',
         rate: 4.8,
+        reviews: 34,
     },
     {
         name: "Inception",
@@ -70,6 +76,7 @@ export const Movies = [
         time: 2.8,
         video: '',
         rate: 4.7,
+        reviews: 34,
     },
     {
         name: "Spider-Man: No Way Home",
@@ -82,6 +89,7 @@ export const Movies = [
         time: 2.3,
         video: '',
         rate: 4.6,
+        reviews: 34,
     },
     {
         name: "Avatar",
@@ -93,7 +101,7 @@ export const Movies = [
         year: 2009,
         time: 3,
         video: '',
-        rate: 4.9,
+        reviews: 34,
     },
     {
         name: "The Dark Knight",
@@ -106,6 +114,7 @@ export const Movies = [
         time: 2.4,
         video: '',
         rate: 4.9,
+        reviews: 34,
     },
     {
         name: "Titanic",
@@ -118,6 +127,7 @@ export const Movies = [
         time: 3.2,
         video: '',
         rate: 4.7,
+        reviews: 34,
     }
 ];
 
