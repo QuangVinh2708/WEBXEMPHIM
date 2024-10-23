@@ -57,7 +57,7 @@ const loginUser = asyncHandler (async (req, res)=> {
         const user = await User.findOne({email});
         //if user exists compare password with hased password then send user data and token to client
         if (user && (await bcrypt.compare(password, user.password))){
-            res.join ({
+            res.json ({
                 _id: user._id,
                 fullName: user.fullName,
                 email: user.email,
