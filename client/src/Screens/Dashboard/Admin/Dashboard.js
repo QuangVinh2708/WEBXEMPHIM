@@ -6,13 +6,13 @@ import Table from '../../../Components/Table'; // Assuming Table component exist
 import { Movies } from '../../../Data/MovieData';
 
 // Dummy Movie data, replace with real data or import it
-const Movie = [
-    { title: 'Movie 1', year: 2022 },
-    { title: 'Movie 2', year: 2021 },
-    { title: 'Movie 3', year: 2020 },
-    { title: 'Movie 4', year: 2019 },
-    { title: 'Movie 5', year: 2018 },
-];
+// const Movies = [
+//     { title: 'Movie 1', year: 2022 },
+//     { title: 'Movie 2', year: 2021 },
+//     { title: 'Movie 3', year: 2020 },
+//     { title: 'Movie 4', year: 2019 },
+//     { title: 'Movie 5', year: 2018 },
+// ];
 
 function Dashboard() {
     const DashboardData = [

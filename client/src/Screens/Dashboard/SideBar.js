@@ -5,9 +5,26 @@ import { FaHeart, FaListAlt,  FaUsers } from 'react-icons/fa'
 import { FiSettings } from 'react-icons/fi'
 import { HiViewGridAdd} from 'react-icons/hi'
 import {RiMovie2Fill,RiLockPasswordLine} from 'react-icons/ri'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutAction } from '../../Redux/Actions/userActions';
+import { toast } from 'react-toastify';
 function SideBar({children}) {
-    const SideLinks = [
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const { userInfo } = useSelector(
+        (state) => state.userLogin
+    );
+
+    // logout function
+    const logOut = () => {
+        dispatch(logoutAction())
+        navigate("/login")
+        toast.success("Logged out successfully")
+    }
+    const SideLinks = 
+        [
         {
             name:"Dashboard",
             link :"/dashboard",
@@ -47,8 +64,10 @@ function SideBar({children}) {
             name:"Change Password",
             link :"/password",
             icon : RiLockPasswordLine
-        },
-    ];
+        }
+    ]
+    
+   
 
 const active = "bg-dryGray text-subMain "
 const hover ="hover:text-white hover:bg-main"

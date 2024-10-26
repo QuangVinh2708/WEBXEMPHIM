@@ -20,12 +20,15 @@ import Categories from './Screens/Dashboard/Admin/Categories';
 import AddMovie from './Screens/Dashboard/Admin/AddMovie';
 import ScrollOnTop from './ScrollOnTop';
 import DrawerContext from './Context/DrawerContext';
+import ToastContainer from './Components/Notfications/ToastContainer';
 
 
 
 function App() {
   Aos.init();
   return (
+    <>
+    <ToastContainer/>
     <DrawerContext>
       <ScrollOnTop>
         <Routes>
@@ -50,6 +53,8 @@ function App() {
         </Routes>
       </ScrollOnTop>
     </DrawerContext>
+    </>
+    
 
 
   );

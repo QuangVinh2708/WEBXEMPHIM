@@ -6,6 +6,7 @@ import userRouter from"./Routes/UserRouter.js";
 import { errorHandler } from './middlewares/errorMiddleware.js';
 import moviesRouter from "./Routes/MoviesRouter.js";
 import categoriesRouter from './Routes/CategoriesRouter.js';
+import Uploadrouter from './Controllers/UploadFile.js';
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ connectDB();
 app.use("/api/users", userRouter);
 app.use("/api/movies", moviesRouter);
 app.use("/api/categories", categoriesRouter);
+app.use("/api/upload", Uploadrouter);
 
 // error handling middleware
 app.use(errorHandler);
@@ -30,5 +32,5 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log(`Server running in http://localhost/${PORT}`);
+    console.log(`Server running in http://localhost:${PORT}`);
 });
