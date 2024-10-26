@@ -4,7 +4,7 @@ import { BsFillGridFill } from 'react-icons/bs'
 import { FaHeart, FaListAlt,  FaUsers } from 'react-icons/fa'
 import { FiSettings } from 'react-icons/fi'
 import { HiViewGridAdd} from 'react-icons/hi'
-import {RiMovie2Fill,RiLockPasswordLine} from 'react-icons/ri'
+import {RiMovie2Fill,RiLockPasswordLine, RiLogoutCircleLine} from 'react-icons/ri'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutAction } from '../../Redux/Actions/userActions';
@@ -18,12 +18,14 @@ function SideBar({children}) {
     );
 
     // logout function
-    const logOut = () => {
+    const logOutHandler = () => {
         dispatch(logoutAction())
-        navigate("/login")
         toast.success("Logged out successfully")
+        navigate("/login")
+        
     }
     const SideLinks = 
+    userInfo?.isAdmin ?
         [
         {
             name:"Dashboard",
@@ -65,7 +67,24 @@ function SideBar({children}) {
             link :"/password",
             icon : RiLockPasswordLine
         }
-    ]
+    ] : userInfo ? [
+        {
+            name:"Update Profile",
+            link :"/profile",
+            icon : FiSettings
+        },
+        {
+            name:"Favorites Movies",
+            link :"/favorites",
+            icon : FaHeart,
+        },
+        {
+            name:"Change Password",
+            link :"/password",
+            icon : RiLockPasswordLine
+        }
+    ] : []
+       ;
     
    
 
@@ -87,6 +106,9 @@ const Hover = ({isActive}) =>
                                 </NavLink> 
                             ))
                         }
+                        <button onClick={logOutHandler} className={`${inActive} ${Hover} w-full`}>
+                            <RiLogoutCircleLine>Log Out</RiLogoutCircleLine>
+                        </button>
                     </div>
                     <div
                     data-aos="fade-up "
