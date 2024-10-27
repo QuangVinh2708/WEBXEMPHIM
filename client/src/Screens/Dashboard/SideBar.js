@@ -107,7 +107,7 @@ const Hover = ({isActive}) =>
                             ))
                         }
                         <button onClick={logOutHandler} className={`${inActive} ${Hover} w-full`}>
-                            <RiLogoutCircleLine>Log Out</RiLogoutCircleLine>
+                        <RiLogoutCircleLine/> Log Out 
                         </button>
                     </div>
                     <div
