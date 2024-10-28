@@ -24,7 +24,7 @@ export const userLoginReducer = (state = {}, action) => {
   };
   
   // RESISTER
-  export const userRegisterReducer = (state = {}, action) => {
+export const userRegisterReducer = (state = {}, action) => {
     switch (action.type) {
       case userConstants.USER_REGISTER_REQUEST:
         return { isLoading: true };
@@ -79,5 +79,91 @@ export const userDeleteProfileReducer = (state = {}, action) => {
   }
 };
 
+// CHANGE PASSWORD
+export const userChangePasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userConstants.USER_CHANGE_PASSWORD_REQUEST:
+        return { isLoading: true };
+    case userConstants.USER_CHANGE_PASSWORD_SUCCESS:
+        return { 
+          isLoading: false, 
+          isSuccess: true, 
+          message: action.payload.message, 
+        };
+    case userConstants.USER_CHANGE_PASSWORD_FAIL:
+        return { isLoading: false, isError: action.payload };
+    case userConstants.USER_CHANGE_PASSWORD_RESET:
+        return {};
+    default:
+        return state;
+}
+};
 
+
+// GET FAVOURITE MOVIES
+export const userGetFavouriteMoviesReducer = (state = {
+  likedMovies: [],
+}, action) => {
+  switch (action.type) {
+    case userConstants.GET_FAVOURITE_MOVIES_REQUEST:
+        return { isLoading: true };
+    case userConstants.GET_FAVOURITE_MOVIES_SUCCESS:
+        return { isLoading: false, likedMovies: action.payload };
+    case userConstants.GET_FAVOURITE_MOVIES_FAIL:
+        return { isLoading: false, isError: action.payload };
+    case userConstants.GET_FAVOURITE_MOVIES_RESET:
+        return {};
+    default:
+        return state;
+}
+};
+
+// DELETE FAVOURITE MOVIES 
+export const userDeleteFavouriteMoviesReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userConstants.DELETE_FAVOURITE_MOVIES_REQUEST:
+        return { isLoading: true };
+    case userConstants.DELETE_FAVOURITE_MOVIES_SUCCESS:
+        return { isLoading: false, isSuccess: true };
+    case userConstants.DELETE_FAVOURITE_MOVIES_FAIL:
+        return { isLoading: false, isError: action.payload };
+    case userConstants.DELETE_FAVOURITE_MOVIES_RESET:
+        return {};
+    default:
+        return state;
+}
+};
   
+// ADMIN GET ALL USERS
+export const adminGetAllUsersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userConstants.GET_ALL_USERS_REQUEST:
+        return { isLoading: true };
+    case userConstants.GET_ALL_USERS_SUCCESS:
+        return { isLoading: false, users: action.payload };
+    case userConstants.GET_ALL_USERS_FAIL:
+        return { isLoading: false, isError: action.payload };
+    case userConstants.GET_ALL_USERS_RESET:
+        return {
+          users: [],
+        };
+    default:
+        return state;
+}
+};
+
+// ADMIN DELETE USER
+export const adminDeleteUsersReducer = (state = {}, action) => {
+  switch (action.type) {
+    case userConstants.DELETE_USERS_REQUEST:
+        return { isLoading: true };
+    case userConstants.DELETE_USERS_SUCCESS:
+        return { isLoading: false, isSuccess: true };
+    case userConstants.DELETE_USERS_FAIL:
+        return { isLoading: false, isError: action.payload };
+    case userConstants.DELETE_USERS_RESET:
+        return {};
+    default:
+        return state;
+}
+};

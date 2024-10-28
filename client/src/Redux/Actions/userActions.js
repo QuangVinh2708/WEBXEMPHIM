@@ -73,5 +73,94 @@ const deleteProfileAction = () => async (dispatch, getState) => {
     }
 };
 
-export { loginAction, registerAction, logoutAction ,updateProfileAction ,deleteProfileAction };
+// change pasword action
+const changePasswordAction = (passwords) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: userConstants.USER_CHANGE_PASSWORD_REQUEST});
+        const respone = await userApi.changePasswordService(
+            passwords,
+            tokenProtection(getState)
+        );
+        dispatch({
+            type: userConstants.USER_CHANGE_PASSWORD_SUCCESS,
+            payload: respone,
+        });
+    } catch (error) {
+        ErrorsAction( error, dispatch, userConstants.USER_DELETE_PROFILE_FAIL);
+    }
+}
+
+// get all favourite movies action 
+const getFavouriteMoviesAction = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: userConstants.GET_FAVOURITE_MOVIES_REQUEST});
+        const respone = await userApi.getFavouriteMovies(
+            tokenProtection(getState)
+        );
+        dispatch({
+            type: userConstants.GET_FAVOURITE_MOVIES_SUCCESS,
+            payload: respone,
+        });
+    } catch (error) {
+        ErrorsAction( error, dispatch, userConstants.GET_FAVOURITE_MOVIES_FAIL);
+    }
+};
+
+// delete all favourite movies action
+const deleteFavouriteMoviesAction = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: userConstants.DELETE_FAVOURITE_MOVIES_REQUEST});
+            await userApi.deleteFavouriteMovies(
+            tokenProtection(getState)
+        );
+        dispatch({
+            type: userConstants.DELETE_FAVOURITE_MOVIES_SUCCESS,
+        });
+        toast.success("Favourite Movies Deleted");
+    } catch (error) {
+        ErrorsAction( error, dispatch, userConstants.DELETE_FAVOURITE_MOVIES_FAIL);
+    }
+};
+
+// admin get all user action 
+const getAllUsersAction = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: userConstants.GET_ALL_USERS_REQUEST});
+        const respone = await userApi.getAllUserService(tokenProtection(getState));
+        dispatch({
+            type: userConstants.GET_ALL_USERS_SUCCESS,
+            payload: respone,
+        });
+    }catch(error){
+        ErrorsAction( error, dispatch, userConstants.GET_ALL_USERS_FAIL);
+    }
+};
+
+// admin delete user action 
+const deleteUsersAction = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: userConstants.DELETE_USERS_REQUEST});
+        const respone = await userApi.deleteUserService(tokenProtection(getState));
+        dispatch({
+            type: userConstants.DELETE_USERS_SUCCESS,
+            payload: respone,
+        });
+        toast.success("User Deleted");
+    }catch(error){
+        ErrorsAction( error, dispatch, userConstants.DELETE_USERS_FAIL);
+    }
+};
+
+export { 
+    loginAction, 
+    registerAction, 
+    logoutAction,
+    updateProfileAction,
+    deleteProfileAction,
+    changePasswordAction,
+    getFavouriteMoviesAction,
+    deleteFavouriteMoviesAction,
+    getAllUsersAction,
+    deleteUsersAction,
+};
 

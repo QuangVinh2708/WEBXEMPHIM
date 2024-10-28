@@ -1,4 +1,4 @@
-import Axios from "./Axios.js"
+import Axios from "./Axios.js";
 
 // Đăng ký người dùng mới
 const registerService = async (user) => {
@@ -52,5 +52,66 @@ const deleteProfileService = async (token) => {
   return data;
 };
 
-export { registerService, logoutService, loginService, updateProfileService ,deleteProfileService  };
+// change password API call
+const changePasswordService = async (passwords, token ) => {
+  const { data } = await Axios.put("/users/password", passwords, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+// get all favourite movies
+const getFavouriteMovies = async (token) => {
+  const { data } = await Axios.get("/user/favourites",{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+// delete all favourite movies
+const deleteFavouriteMovies = async (token) => {
+  const { data } = await Axios.delete("/user/favourites",{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+// admin get all users
+const getAllUserService = async (token) => {
+  const {data} =await Axios.get("/users", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+// admin delete user
+const deleteUserService = async (id, token) => {
+  const {data} = await Axios.delete(`/users/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return data;
+};
+
+export { 
+  registerService, 
+  logoutService, 
+  loginService, 
+  updateProfileService,
+  deleteProfileService,
+  changePasswordService,
+  getFavouriteMovies,
+  deleteFavouriteMovies,
+  getAllUserService,
+  deleteUserService,
+};
 
