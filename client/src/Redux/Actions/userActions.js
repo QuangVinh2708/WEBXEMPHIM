@@ -137,13 +137,12 @@ const getAllUsersAction = () => async (dispatch, getState) => {
 };
 
 // admin delete user action 
-const deleteUsersAction = () => async (dispatch, getState) => {
+const deleteUsersAction = (id) => async (dispatch, getState) => {
     try {
         dispatch({ type: userConstants.DELETE_USERS_REQUEST});
-        const respone = await userApi.deleteUserService(tokenProtection(getState));
+        await userApi.deleteUserService(id,tokenProtection(getState));
         dispatch({
             type: userConstants.DELETE_USERS_SUCCESS,
-            payload: respone,
         });
         toast.success("User Deleted");
     }catch(error){

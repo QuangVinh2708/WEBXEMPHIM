@@ -171,22 +171,22 @@ const changeUserPassword = asyncHandler(async (req, res) => {
 // @route Get /api/users/favorites
 // @access Private
 const getLikedMovies = asyncHandler(async (req, res) => {
-    try{
+    try {
         // find user in DB
         const user = await User.findById(req.user._id).populate("likedMovies");
-        // if user exists send liked movies to client
-        if(user){
+        
+        if (user) {
+            // send liked movies to client
             res.json(user.likedMovies);
+        } else {
+            // send not found error if user doesn't exist
+            res.status(404).json({ message: "User not found" });
         }
-        // else send error message
-        else{
-            res.status(404);
-            throw new Error("User not found");
-        }
-    } catch (error){
-        res.status(400).json({ message: error.message});
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
 });
+
 
 // @desc Add movie to liked movies
 // @route POST /api/users/favorites
@@ -272,7 +272,7 @@ const deleteUser = asyncHandler(async (req, res) => {
                 throw new Error("Can't delete admin user");
             }
             // else delete user from DB
-            await user.remove();
+            await user.deleteOne();
             res.json({ message: "User deleted successfully" });
         } 
         // else send error message

@@ -11,7 +11,7 @@ function FavoritesMovies() {
     const dispatch = useDispatch();
 
     const { isLoading, isError, likedMovies = [] } = useSelector(
-        state => state.userGetFavouriteMovies
+        (state) => state.userGetFavouriteMovies
     );
 
     // delete
@@ -20,7 +20,7 @@ function FavoritesMovies() {
         isError: deleteError,
         isSuccess,
     } = useSelector(
-        state => state.userDeleteFavouriteMovies
+        (state )=> state.userDeleteFavouriteMovies
     );
 
     // delete movies handler

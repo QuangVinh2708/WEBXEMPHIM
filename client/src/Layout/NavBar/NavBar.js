@@ -44,7 +44,7 @@ function NavBar() {
                             Contact Us
                         </NavLink>
                         <NavLink to={
-                            userInfo?.isAdmin ? "/dashbroad" : userInfo ? "/profile" : "/login"
+                            userInfo?.isAdmin ? "/dashboard" : userInfo ? "/profile" : "/login"
                         } className={Hover}>
                             {
                                 userInfo ? (

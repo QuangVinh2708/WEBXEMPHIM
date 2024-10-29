@@ -64,7 +64,7 @@ const changePasswordService = async (passwords, token ) => {
 
 // get all favourite movies
 const getFavouriteMovies = async (token) => {
-  const { data } = await Axios.get("/user/favourites",{
+  const { data } = await Axios.get("/users/favorites",{
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -74,7 +74,7 @@ const getFavouriteMovies = async (token) => {
 
 // delete all favourite movies
 const deleteFavouriteMovies = async (token) => {
-  const { data } = await Axios.delete("/user/favourites",{
+  const { data } = await Axios.delete("/users/favorites",{
     headers: {
       Authorization: `Bearer ${token}`,
     },

@@ -135,7 +135,7 @@ export const userDeleteFavouriteMoviesReducer = (state = {}, action) => {
 };
   
 // ADMIN GET ALL USERS
-export const adminGetAllUsersReducer = (state = {}, action) => {
+export const adminGetAllUsersReducer = (state = {users: []}, action) => {
   switch (action.type) {
     case userConstants.GET_ALL_USERS_REQUEST:
         return { isLoading: true };
