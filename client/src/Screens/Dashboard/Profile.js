@@ -99,12 +99,14 @@ function Profile() {
                     <button
                         onClick={deleteProfile}
                         disabled ={deleteLoading || isLoading }
-                        type="button" className="bg-subMain font-medium transitions hover:bg-main border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto">
+                        className="bg-subMain font-medium transitions hover:bg-main border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto"
+                    >
                         { deleteLoading ? "Deleting..." : "Delete Account"}
                     </button>
                     <button
                         disabled ={deleteLoading || isLoading }
-                        type="submit" className="bg-main font-medium transitions hover:bg-subMain border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto">
+                        className="bg-main font-medium transitions hover:bg-subMain border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto"
+                    >
                         { isLoading ? "Updating..." : "Update Profile"}
                     </button>
                 </div>
