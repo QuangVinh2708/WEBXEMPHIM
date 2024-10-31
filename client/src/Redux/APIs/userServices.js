@@ -1,5 +1,8 @@
 import Axios from "./Axios.js";
 
+
+// ***************** public apis ******************//
+
 // Đăng ký người dùng mới
 const registerService = async (user) => {
   const { data } = await Axios.post("/users", user);
@@ -23,6 +26,8 @@ const loginService = async (user) => {
   }
   return data;
 };
+
+// ***************** private apis ******************//
 
 // update profile API call
 const updateProfileService = async (user,token) => {
@@ -81,6 +86,8 @@ const deleteFavouriteMovies = async (token) => {
   });
   return data;
 };
+
+// ***************** admin apis ******************//
 
 // admin get all users
 const getAllUserService = async (token) => {

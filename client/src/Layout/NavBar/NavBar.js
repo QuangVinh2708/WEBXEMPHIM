@@ -6,6 +6,9 @@ import { CgUser } from "react-icons/cg";
 import { useSelector } from 'react-redux';
 function NavBar() {
     const { userInfo } = useSelector((state) => state.userLogin);
+    const {likedMovies = [] } = useSelector(
+        (state) => state.userGetFavouriteMovies
+    );
     const hover = "hover:text-subMain transitions text-white"
     const Hover = ({ isActive }) => (isActive ? 'text-subMain' : hover)
     return (
@@ -56,7 +59,8 @@ function NavBar() {
                         <NavLink to="/favorites" className={' ${Hover} relative '}>
                             <FaHeart className="w-6 h-6" />
                             <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1">
-                                3
+                                {likedMovies?.length}
+                               
                             </div>
                         </NavLink>
                     </div>
