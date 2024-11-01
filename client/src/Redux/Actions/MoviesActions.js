@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 import { ErrorsAction, tokenProtection } from "../Protection";
 
 // get all movies action
-export const getAllMoviesAction = (
-    {
+export const getAllMoviesAction =
+    ({
         category = "",
         time = "",
         language = "",
@@ -26,7 +26,6 @@ export const getAllMoviesAction = (
                 search,
                 pageNumber
             );
-        
             dispatch({
                 type: moviesConstants.MOVIES_LIST_SUCCESS,
                 payload: response,
@@ -35,3 +34,45 @@ export const getAllMoviesAction = (
             ErrorsAction(error, dispatch, moviesConstants.MOVIES_LIST_FAIL);
         }
     };
+
+// Get random movies action
+export const getRandomMoviesAction = () => async (dispatch) => {
+    try {
+        dispatch({ type: moviesConstants.MOVIES_RANDOM_REQUEST });
+        const response = await moviesAPIs.getRandomMoviesService();
+        dispatch({
+            type: moviesConstants.MOVIES_RANDOM_SUCCESS,
+            payload: response,
+        });
+    } catch (error) {
+        ErrorsAction(error, dispatch, moviesConstants.MOVIES_RANDOM_FAIL);
+    }
+};
+
+// Get movie by id action
+export const getMovieByIdAction = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: moviesConstants.MOVIE_DETAILS_REQUEST });
+        const response = await moviesAPIs.getMovieByIdService(id);
+        dispatch({
+            type: moviesConstants.MOVIE_DETAILS_SUCCESS,
+            payload: response,
+        });
+    } catch (error) {
+        ErrorsAction(error, dispatch, moviesConstants.MOVIE_DETAILS_FAIL);
+    }
+};
+
+// Get top rated movie action
+export const getTopRatedMovieAction = () => async (dispatch) => {
+    try {
+        dispatch({ type: moviesConstants.MOVIE_TOP_RATED_REQUEST });
+        const response = await moviesAPIs.getTopRatedMovieService();
+        dispatch({
+            type: moviesConstants.MOVIE_TOP_RATED_SUCCESS,
+            payload: response,
+        });
+    } catch (error) {
+        ErrorsAction(error, dispatch, moviesConstants.MOVIE_TOP_RATED_FAIL);
+    }
+};

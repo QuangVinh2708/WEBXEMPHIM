@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // Import useParams
 import Layout from "../Layout/Layout";
 import MovieInfo from '../Components/Single/MovieInfo';
@@ -9,34 +9,75 @@ import Titles from '../Components/Titles';
 import Movie from '../Components/Movie';
 import { BsCollectionFill } from 'react-icons/bs';
 import ShareMovieModal from '../Components/Modals/ShareModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMovieByIdAction } from '../Redux/Actions/MoviesActions';
+import Loader from '../Components/Notfications/Loader';
+import { RiMovie2Line } from 'react-icons/ri';
 function SingleMovie() {
     const [modalOpen, setModalOpen] = useState(false);
 
-    const { id } = useParams(); // Get id from URL params
-    const movie = Movies.find((movie) => movie.name === id); // Use appropriate comparison if id is a number
-    const RelatedMovies = Movies.filter(
-        (m) => m.category === movie.category
+    const { id } = useParams(); 
+
+    const dispatch = useDispatch();
+    const sameClass = "w-full gap-6 flex-colo min-h-hscreen"
+    // user Selector
+    const{isLoading, isError, movie} = useSelector(
+        (state) => state.getMovieById
     );
+
+    const {movies} = useSelector(
+        (state) => state.getAllMovies
+    );
+    // related movies
+
+    const RelatedMovies = movies?.filter(
+        (m) => m.category === movie?.category
+    );
+
+    // use Effect
+    useEffect(() => {
+        //movie id
+        dispatch(getMovieByIdAction(id));
+    }, [dispatch, id]);
 
     return (
         <Layout>
-            <ShareMovieModal
-                modalOpen={modalOpen} setModalOpen={setModalOpen} movie={movie}/>
-            <MovieInfo movie={movie} setModalOpen={setModalOpen}/>
-            <div className='container mx-auto min-h-screen px-2 my-6'>
-                <MovieCasts />
-                {/* rate */}
-                <MovieRates movie={movie} />
-                {/* related */}
-                <div className="my-16">
-                    <Titles title="Related Movies" Icon={BsCollectionFill} />
-                    <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
-                        {RelatedMovies.map((movie, index) => (
-                            <Movie key={index} movie={movie} />
-                        ))}
+            {
+                isLoading ? <div className={sameClass}>
+                    <Loader/>
+                </div>
+                :
+                isError ? <div className={sameClass}>
+                    <div className="flex-colo w-24 h-24 p-5 mb-4 rounded-full bg-dry text-subMain text-4xl">
+                        <RiMovie2Line/>
+                    </div>
+                        <p className="text-border text-sm">
+                            Something went wrong
+                        </p>
+                </div>
+                : (
+                    <>
+                        <ShareMovieModal
+                    modalOpen={modalOpen} setModalOpen={setModalOpen} movie={movie}/>
+                    <MovieInfo movie={movie} setModalOpen={setModalOpen}/>
+                <div className='container mx-auto min-h-screen px-2 my-6'>
+                    <MovieCasts />
+                    {/* rate */}
+                    <MovieRates movie={movie} />
+                    {/* related */}
+                    <div className="my-16">
+                        <Titles title="Related Movies" Icon={BsCollectionFill} />
+                        <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
+                            {RelatedMovies.map((movie, index) => (
+                                <Movie key={index} movie={movie} />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
+                    </>
+                )
+            }
+            
         </Layout>
     );
 }
