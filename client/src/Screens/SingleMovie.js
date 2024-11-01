@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; // Import useParams
 import Layout from "../Layout/Layout";
 import MovieInfo from '../Components/Single/MovieInfo';
-import { Movies } from '../Data/MovieData';
 import MovieCasts from '../Components/Single/MovieCasts'
 import MovieRates from '../Components/Single/MovieRates';
 import Titles from '../Components/Titles';
@@ -16,16 +15,16 @@ import { RiMovie2Line } from 'react-icons/ri';
 function SingleMovie() {
     const [modalOpen, setModalOpen] = useState(false);
 
-    const { id } = useParams(); 
+    const { id } = useParams();
 
     const dispatch = useDispatch();
     const sameClass = "w-full gap-6 flex-colo min-h-hscreen"
     // user Selector
-    const{isLoading, isError, movie} = useSelector(
+    const { isLoading, isError, movie } = useSelector(
         (state) => state.getMovieById
     );
 
-    const {movies} = useSelector(
+    const { movies } = useSelector(
         (state) => state.getAllMovies
     );
     // related movies
@@ -44,40 +43,40 @@ function SingleMovie() {
         <Layout>
             {
                 isLoading ? <div className={sameClass}>
-                    <Loader/>
+                    <Loader />
                 </div>
-                :
-                isError ? <div className={sameClass}>
-                    <div className="flex-colo w-24 h-24 p-5 mb-4 rounded-full bg-dry text-subMain text-4xl">
-                        <RiMovie2Line/>
-                    </div>
+                    :
+                    isError ? <div className={sameClass}>
+                        <div className="flex-colo w-24 h-24 p-5 mb-4 rounded-full bg-dry text-subMain text-4xl">
+                            <RiMovie2Line />
+                        </div>
                         <p className="text-border text-sm">
                             Something went wrong
                         </p>
-                </div>
-                : (
-                    <>
-                        <ShareMovieModal
-                    modalOpen={modalOpen} setModalOpen={setModalOpen} movie={movie}/>
-                    <MovieInfo movie={movie} setModalOpen={setModalOpen}/>
-                <div className='container mx-auto min-h-screen px-2 my-6'>
-                    <MovieCasts />
-                    {/* rate */}
-                    <MovieRates movie={movie} />
-                    {/* related */}
-                    <div className="my-16">
-                        <Titles title="Related Movies" Icon={BsCollectionFill} />
-                        <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
-                            {RelatedMovies.map((movie, index) => (
-                                <Movie key={index} movie={movie} />
-                            ))}
-                        </div>
                     </div>
-                </div>
-                    </>
-                )
+                        : (
+                            <>
+                                <ShareMovieModal
+                                    modalOpen={modalOpen} setModalOpen={setModalOpen} movie={movie} />
+                                <MovieInfo movie={movie} setModalOpen={setModalOpen} />
+                                <div className='container mx-auto min-h-screen px-2 my-6'>
+                                    <MovieCasts movie={movie}/>
+                                    {/* rate */}
+                                    <MovieRates movie={movie} />
+                                    {/* related */}
+                                    <div className="my-16">
+                                        <Titles title="Related Movies" Icon={BsCollectionFill} />
+                                        <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
+                                            {RelatedMovies.map((movie, index) => (
+                                                <Movie key={index} movie={movie} />
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        )
             }
-            
+
         </Layout>
     );
 }

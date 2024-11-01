@@ -4,9 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react'; // Swiper React components
 import 'swiper/css'; // Import core Swiper styles
 import 'swiper/css/autoplay'; // Import autoplay styles (if using Autoplay)
 import Titles from '../Titles';
-import {UsersData} from '../../Data/MovieData';
 
-function MovieCasts() {
+function MovieCasts({movie}) {
     return (
         <div className='my-12'>
             <Titles title="Casts" Icon={FaUsers} />
@@ -16,7 +15,7 @@ function MovieCasts() {
                         delay: 1000,
                         disableOnInteraction: false,
                     }}
-                    loop={true}
+                    //loop={true}
                     speed={1000}
                     spaceBetween={10}
                     breakpoints={{
@@ -27,11 +26,13 @@ function MovieCasts() {
                         1280: { slidesPerView: 5, spaceBetween: 30 },
                     }}
                 >
-                    {UsersData.map((user, i) => (
-                        <SwiperSlide key={i}>
+                    {movie?.casts?.map((cast) => (
+                        <SwiperSlide key={cast?._id}>
                             <div className='w-full p-3 italic text-xs text-teal-50 rounded flex-colo bg-dry border border-gray-800'>
-                                <img src={user.image} alt={user.fullName} className='w-full h-64 object-cover rounded mb-4' />
-                                <p>{user.fullName}</p>
+                                <img src={cast.image ? `${cast.image}` : ""} 
+                                alt={cast.name} 
+                                className='w-full h-64 object-cover rounded mb-4' />
+                                <p>{cast.name}</p>
                             </div>
                         </SwiperSlide>
                     ))}

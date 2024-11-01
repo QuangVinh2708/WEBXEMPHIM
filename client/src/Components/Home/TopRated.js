@@ -33,7 +33,7 @@ const SwiperTop = ({ prevEl, nextEl, movies }) => {
                         <div className="relative p-4 h-rate hovered border border-border bg-dry rounded-lg overflow-hidden">
                             <img
                                 src={movie.titleImage 
-                                    ? `/images/movies/${movie.titleImage}`
+                                    ? `${movie.titleImage}`
                                     : "/images/user.png"
                                 }
                                 alt={movie?.name}

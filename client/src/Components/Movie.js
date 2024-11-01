@@ -11,7 +11,7 @@ function Movie({ movie }) {
         <img 
           src={
             movie?.image 
-            ? `/images/movies/${movie?.image}` 
+            ? `${movie?.image}` 
             : "/images/user.png"}
           alt={movie?.name} 
           className="w-full h-64 object-cover" 
