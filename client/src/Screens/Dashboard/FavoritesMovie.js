@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import SideBar from './SideBar';
 import Table from '../../Components/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteFavouriteMoviesAction, getFavouriteMoviesAction } from '../../Redux/Actions/userActions';
+import { deleteFavoriteMoviesAction, getFavoriteMoviesAction } from '../../Redux/Actions/userActions';
 import toast from 'react-hot-toast';
 import Loader from '../../Components/Notfications/Loader';
 import { Empty } from '../../Components/Notfications/Empty';
@@ -11,7 +11,7 @@ function FavoritesMovies() {
     const dispatch = useDispatch();
 
     const { isLoading, isError, likedMovies = [] } = useSelector(
-        (state) => state.userGetFavouriteMovies
+        (state) => state.userGetFavoriteMovies
     );
 
     // delete
@@ -20,18 +20,18 @@ function FavoritesMovies() {
         isError: deleteError,
         isSuccess,
     } = useSelector(
-        (state )=> state.userDeleteFavouriteMovies
+        (state )=> state.userDeleteFavoriteMovies
     );
 
     // delete movies handler
     const deleteMoviesHandler = () => {
         window.confirm("Are you sure you want to delete all movies?") &&
-        dispatch(deleteFavouriteMoviesAction());
+        dispatch(deleteFavoriteMoviesAction());
     };
 
     // useEffect
     useEffect(() => {
-        dispatch(getFavouriteMoviesAction());
+        dispatch(getFavoriteMoviesAction());
         if (isError || deleteError) {
             toast.error(isError || deleteError);
             dispatch({type: isError ? "GET_FAVOURITE_MOVIES_RESET" : "DELETE_FAVOURITE_MOVIES_RESET"});

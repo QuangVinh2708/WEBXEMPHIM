@@ -76,3 +76,115 @@ export const getTopRatedMovieAction = () => async (dispatch) => {
         ErrorsAction(error, dispatch, moviesConstants.MOVIE_TOP_RATED_FAIL);
     }
 };
+
+// review movie action
+export const reviewMovieAction = ({id, review}) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: moviesConstants.CREATE_REVIEW_REQUEST });
+      const response = await moviesAPIs.reviewMovieService(
+        tokenProtection(getState),
+        id,
+        review
+      );
+      dispatch({
+        type: moviesConstants.CREATE_REVIEW_SUCCESS,
+        payload: response,
+      });
+      toast.success("Review added successfully");
+      dispatch({ type: moviesConstants.CREATE_REVIEW_RESET });
+      dispatch(getMovieByIdAction(id));
+    } catch (error) {
+      ErrorsAction(error, dispatch, moviesConstants.CREATE_REVIEW_FAIL);
+    }
+  };
+  
+  // delete movie action
+export const deleteMovieAction = (id) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: moviesConstants.DELETE_MOVIE_REQUEST });
+      
+      const response = await moviesAPIs.deleteMovieService(
+        tokenProtection(getState),
+        id
+      );
+      
+      dispatch({
+        type: moviesConstants.DELETE_MOVIE_SUCCESS,
+        payload: response,
+      });
+      
+      toast.success("Movie deleted successfully");
+      dispatch(getAllMoviesAction({}));
+    } catch (error) {
+      ErrorsAction(error, dispatch, moviesConstants.DELETE_MOVIE_FAIL);
+    }
+  };
+// delete all movie action
+  export const deleteAllMoviesAction = () => async (dispatch, getState) => {
+    try {
+      dispatch({ type: moviesConstants.DELETE_ALL_MOVIES_REQUEST });
+      
+      const response = await moviesAPIs.deleteAllMoviesService(
+        tokenProtection(getState)
+      );
+      
+      dispatch({
+        type: moviesConstants.DELETE_ALL_MOVIES_SUCCESS,
+        payload: response,
+      });
+      
+      toast.success("All movies deleted successfully");
+      dispatch(getAllMoviesAction({}));
+    } catch (error) {
+      ErrorsAction(error, dispatch, moviesConstants.DELETE_ALL_MOVIES_FAIL);
+    }
+  };
+
+// create movie action
+export const createMovieAction = (movie) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: moviesConstants.CREATE_MOVIE_REQUEST });
+    
+    const response = await moviesAPIs.createMovieService(
+      tokenProtection(getState),
+      movie
+    );
+    
+    dispatch({
+      type: moviesConstants.CREATE_MOVIE_SUCCESS,
+      payload: response,
+    });
+    
+    toast.success("Movie created successfully");
+    dispatch(deleteAllCastAction());
+  } catch (error) {
+    ErrorsAction(error, dispatch, moviesConstants.CREATE_MOVIE_FAIL);
+  }
+};
+
+ // ********CASTS**********
+
+// add cast
+export const addCastAction = (cast) => async (dispatch, getState) => {
+  dispatch({ type: moviesConstants.ADD_CAST, payload: cast });
+  localStorage.setItem("casts", JSON.stringify(getState().casts.casts));
+};
+
+// remove cast
+export const removeCastAction = (id) => async (dispatch, getState) => {
+  dispatch({ type: moviesConstants.DELETE_CAST, payload: id });
+  localStorage.setItem("casts", JSON.stringify(getState().casts.casts));
+};
+
+// update cast
+export const updateCastAction = (cast) => async (dispatch, getState) => {
+  dispatch({ type: moviesConstants.EDIT_CAST, payload: cast });
+  localStorage.setItem("casts", JSON.stringify(getState().casts.casts));
+};
+// delete all cast
+export const deleteAllCastAction = () => async (dispatch) => {
+  dispatch({ type: moviesConstants.RESET_CAST });
+  localStorage.removeItem("casts");
+};
+
+ 

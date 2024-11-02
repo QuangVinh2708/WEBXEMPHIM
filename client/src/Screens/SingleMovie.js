@@ -14,9 +14,7 @@ import Loader from '../Components/Notfications/Loader';
 import { RiMovie2Line } from 'react-icons/ri';
 function SingleMovie() {
     const [modalOpen, setModalOpen] = useState(false);
-
     const { id } = useParams();
-
     const dispatch = useDispatch();
     const sameClass = "w-full gap-6 flex-colo min-h-hscreen"
     // user Selector
@@ -64,15 +62,18 @@ function SingleMovie() {
                                     {/* rate */}
                                     <MovieRates movie={movie} />
                                     {/* related */}
-                                    <div className="my-16">
+                                    {
+                                        RelatedMovies?.length > 0 && <div className="my-16">
                                         <Titles title="Related Movies" Icon={BsCollectionFill} />
                                         <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
-                                            {RelatedMovies.map((movie, index) => (
-                                                <Movie key={index} movie={movie} />
+                                            {RelatedMovies?.map((movie )=> (
+                                                <Movie key={movie._id} movie={movie} />
                                             ))}
                                         </div>
                                     </div>
-                                </div>
+                                
+                                    }
+                                   </div> 
                             </>
                         )
             }

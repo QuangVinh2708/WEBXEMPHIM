@@ -22,18 +22,38 @@ import ScrollOnTop from './ScrollOnTop';
 import DrawerContext from './Context/DrawerContext';
 import ToastContainer from './Components/Notfications/ToastContainer';
 import { AdminProtectedRouter, ProtectedRouter } from './ProtectedRouter';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategoriesAction } from './Redux/Actions/CategoriesActions';
+import { getAllMoviesAction } from './Redux/Actions/MoviesActions';
+import { getFavoriteMoviesAction } from './Redux/Actions/userActions';
+import { toast } from 'react-toastify';
 
 
 
 function App() {
   Aos.init();
   const dispatch = useDispatch();
+  const { userInfo } = useSelector((state) => state.userLogin);
+  const { isError, isSuccess } = useSelector(
+    (state) => state.userLikeMovie
+  );
+  const { isError: catError } = useSelector((state) => state.categoryGetAll);
 
   useEffect(() => {
     dispatch(getAllCategoriesAction());
-  }, [dispatch]);
+    dispatch(getAllMoviesAction({}));
+    if (userInfo) {
+      dispatch(getFavoriteMoviesAction());
+    }
+    if (isError || catError) {
+      toast.error(isError || catError);
+      dispatch({ type: "LIKE_MOVIE_RESET" });
+    }
+    if(isSuccess){
+      dispatch({ type: "LIKE_MOVIE_RESET" })
+    }
+  }, [dispatch, userInfo, isError, catError, isSuccess]);
+
 
   return (
     <>

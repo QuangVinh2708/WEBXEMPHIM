@@ -19,7 +19,7 @@ function HomeScreen() {
         (state) => state.getTopRatedMovie
     );
     const { isLoading , isError, movies  } = useSelector(
-        (state) => state.getRandomMovies
+        (state) => state.getAllMovies
     );
 
 

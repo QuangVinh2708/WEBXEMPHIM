@@ -193,31 +193,33 @@ const getLikedMovies = asyncHandler(async (req, res) => {
 // @access Private
 const addLikedMovie = asyncHandler(async (req, res) => {
     const { movieId } = req.body;
+  
     try {
-        // find user in DB
-        const user = await User.findById(req.user._id);
-        // if user exists add movie to liked movies and save it in DB
-        if (user) {
-            // check if movie already liked
-            // if movie already liked send error message
-            if (user.likedMovies.includes(movieId)) {
-                res.status(400);
-                throw new Error("Movie already liked");
-            }
-            // else add movie to liked movies and save it in DB
-            user.likedMovies.push(movieId);
-            await user.save();
-            res.json(user.likedMovies);
-        } 
-        // else send error message
-        else {
-            res.status(404);
-            throw new Error("Movie not found");
-        }
+      // Find user in DB
+      const user = await User.findById(req.user._id);
+  
+      // If user exists, add movie to liked movies and save it in DB
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+  
+      // Check if movie is already liked
+      if (user.likedMovies.includes(movieId)) {
+        return res.status(409).json({ message: "Movie already liked" });
+      }
+  
+      // Add movie to liked movies and save in DB
+      user.likedMovies.push(movieId);
+      await user.save();
+  
+      // Respond with the updated liked movies array
+      res.status(200).json({ likedMovies: user.likedMovies });
     } catch (error) {
-        res.status(400).json({ message: error.message });
+      console.error("Error adding liked movie:", error);
+      res.status(500).json({ message: "Server error" });
     }
-});
+  });
+  
 
 // @desc Delete all liked movies
 // @route DELETE /api/users/favorites

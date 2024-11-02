@@ -91,7 +91,7 @@ const changePasswordAction = (passwords) => async (dispatch, getState) => {
 }
 
 // get all favourite movies action 
-const getFavouriteMoviesAction = () => async (dispatch, getState) => {
+const getFavoriteMoviesAction = () => async (dispatch, getState) => {
     try {
         dispatch({ type: userConstants.GET_FAVOURITE_MOVIES_REQUEST});
         const respone = await userApi.getFavouriteMovies(
@@ -107,10 +107,10 @@ const getFavouriteMoviesAction = () => async (dispatch, getState) => {
 };
 
 // delete all favourite movies action
-const deleteFavouriteMoviesAction = () => async (dispatch, getState) => {
+const deleteFavoriteMoviesAction = () => async (dispatch, getState) => {
     try {
         dispatch({ type: userConstants.DELETE_FAVOURITE_MOVIES_REQUEST});
-            await userApi.deleteFavouriteMovies(
+            await userApi.deleteFavoriteMovies(
             tokenProtection(getState)
         );
         dispatch({
@@ -150,6 +150,25 @@ const deleteUsersAction = (id) => async (dispatch, getState) => {
     }
 };
 
+// user like movie action
+const likeMovieAction = (movieId) => async (dispatch, getState) => {
+    try {
+      dispatch({ type: userConstants.LIKE_MOVIE_REQUEST });
+      const response = await userApi.likeMovieService(
+        movieId,
+        tokenProtection(getState)
+      );
+      dispatch({
+        type: userConstants.LIKE_MOVIE_SUCCESS,
+        payload: response,
+      });
+      toast.success("Added to your favorites");
+      dispatch(getFavoriteMoviesAction());
+    } catch (error) {
+      ErrorsAction(error, dispatch, userConstants.LIKE_MOVIE_FAIL);
+    }
+  };
+  
 export { 
     loginAction, 
     registerAction, 
@@ -157,9 +176,10 @@ export {
     updateProfileAction,
     deleteProfileAction,
     changePasswordAction,
-    getFavouriteMoviesAction,
-    deleteFavouriteMoviesAction,
+    getFavoriteMoviesAction,
+    deleteFavoriteMoviesAction,
     getAllUsersAction,
     deleteUsersAction,
+    likeMovieAction
 };
 

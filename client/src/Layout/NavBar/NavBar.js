@@ -9,7 +9,7 @@ function NavBar() {
     const navigate = useNavigate()
     const { userInfo } = useSelector((state) => state.userLogin);
     const {likedMovies = [] } = useSelector(
-        (state) => state.userGetFavouriteMovies
+        (state) => state.userGetFavoriteMovies
     );
     const hover = "hover:text-subMain transitions text-white"
     const Hover = ({ isActive }) => (isActive ? 'text-subMain' : hover)
@@ -25,16 +25,6 @@ function NavBar() {
         }
     };
     
-
-
-
-
-
-
-
-
-
-
     return (
         <>
             <div className='bg-main shadow-md sticky top-0 z-20'>
@@ -87,7 +77,7 @@ function NavBar() {
                         <NavLink to="/favorites" className={' ${Hover} relative '}>
                             <FaHeart className="w-6 h-6" />
                             <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1">
-                                {likedMovies?.length}
+                                {likedMovies?.length||0}
                                
                             </div>
                         </NavLink>

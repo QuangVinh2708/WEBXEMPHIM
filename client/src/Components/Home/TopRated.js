@@ -11,8 +11,18 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 import Loader from '../Notfications/Loader';
 import { Empty } from '../Notfications/Empty';
+import { useDispatch, useSelector } from 'react-redux';
+import { IfMovieLiked, LikeMovie } from '../../Context/Functionnalities';
 
 const SwiperTop = ({ prevEl, nextEl, movies }) => {
+    const {isLoading} = useSelector((state) => state.userLikeMovie)
+    const dispatch = useDispatch()
+    const userInfo = useSelector((state) => state.userLogin);
+
+    // if like function
+    const isLiked = (movie) => {
+        return IfMovieLiked(movie)
+    }
     return (
         <Swiper
             navigation={{ nextEl, prevEl }}
@@ -40,7 +50,12 @@ const SwiperTop = ({ prevEl, nextEl, movies }) => {
                                 className="w-full h-full object-cover rounded-lg"
                             />
                             <div className="px-4 hoveres gap-6 text-center absolute bg-black bg-opacity-70 top-0 left-0 right-0 bottom-0">
-                                <button className="w-12 h-12 flex justify-center items-center rounded-full bg-white bg-opacity-30 text-white hover:bg-subMain transition-all duration-300">
+                                <button
+                                  onClick={() => LikeMovie(movie, dispatch, userInfo)}
+                                  disabled={isLiked || isLoading} 
+                                className={`w-12 h-12 flex justify-center items-center rounded-full
+                                ${isLiked(movie) ? "bg-subMain":"bg-white bg-opacity-30"}
+                                 text-white`}>
                                     <FaHeart />
                                 </button>
                                 <Link
