@@ -187,4 +187,28 @@ export const deleteAllCastAction = () => async (dispatch) => {
   localStorage.removeItem("casts");
 };
 
+// Update movie action
+export const updateMovieAction = (id, movie) => async (dispatch, getState) => {
+  try {
+      dispatch({ type: moviesConstants.UPDATE_MOVIE_REQUEST });
+      
+      const response = await moviesAPIs.updateMovieService(
+          tokenProtection(getState),
+          id,
+          movie
+      );
+      
+      dispatch({
+          type: moviesConstants.UPDATE_MOVIE_SUCCESS,
+          payload: response,
+      });
+      
+      toast.success("Movie updated successfully");
+      dispatch(getMovieByIdAction(id));
+      dispatch(deleteAllCastAction());
+  } catch (error) {
+      ErrorsAction(error, dispatch, moviesConstants.UPDATE_MOVIE_FAIL);
+  }
+};
+
  

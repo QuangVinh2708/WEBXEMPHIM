@@ -28,7 +28,7 @@ const SwiperTop = ({ prevEl, nextEl, movies }) => {
             navigation={{ nextEl, prevEl }}
             autoplay={{ delay: 3000 }}
             speed={1000}
-            loop={true}
+            //loop={true}
             modules={[Navigation, Autoplay]}
             breakpoints={{
                 0: { slidesPerView: 1, spaceBetween: 10 },

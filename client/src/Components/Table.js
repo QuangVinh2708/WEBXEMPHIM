@@ -28,9 +28,10 @@ const Rows = (movie, i, onDeleteHandler,admin ) => {
             <td className={`${Text} float-right flex-rows gap-2`}>
                 { admin ? (
                         <>
-                        <button className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
+                        <Link to={`/edit/${movie?._id}`} 
+                        className="border border-border bg-dry flex-rows gap-2 text-border rounded py-1 px-2">
                     Edit<FaEdit className="text-green-500"/>
-                </button>
+                </Link>
                 <button
                 onClick={() => onDeleteHandler(movie?._id)} 
                 className="bg-subMain text-white  rounded flex-colo w-8 h-8 ">

@@ -40,11 +40,11 @@ function SingleMovie() {
     return (
         <Layout>
             {
-                isLoading ? <div className={sameClass}>
+                isLoading ? (<div className={sameClass}>
                     <Loader />
                 </div>
-                    :
-                    isError ? <div className={sameClass}>
+                ):
+                    isError ? (<div className={sameClass}>
                         <div className="flex-colo w-24 h-24 p-5 mb-4 rounded-full bg-dry text-subMain text-4xl">
                             <RiMovie2Line />
                         </div>
@@ -52,7 +52,7 @@ function SingleMovie() {
                             Something went wrong
                         </p>
                     </div>
-                        : (
+                        ): (
                             <>
                                 <ShareMovieModal
                                     modalOpen={modalOpen} setModalOpen={setModalOpen} movie={movie} />
