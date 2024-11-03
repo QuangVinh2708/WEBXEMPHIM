@@ -104,7 +104,7 @@ function CastsModal({ modalOpen, setModalOpen, cast }) {
                     type='submit'
                         onClick={() => setModalOpen(false)}
                         className='w-full flex-colo gap-4 py-3 font-bold text-lg transitions hover:bg-dry rounded bg-subMain text-white'>
-                        {cast ? "Cập Nhật " : "Tạo "}
+                        {cast ? "Update " : " Create"}
                     </button>
                 </form>
             </div>

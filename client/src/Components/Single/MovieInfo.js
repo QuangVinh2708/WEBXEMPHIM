@@ -1,10 +1,28 @@
 import React from 'react';
-import FlexMovieItems from '../FlexMovieItems'
+import FlexMovieItems from '../FlexMovieItems';
 import { FaPlay, FaShareAlt } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
-import { FiLogIn } from 'react-icons/fi'
+import { Link, useNavigate } from 'react-router-dom';
+import { FiLogIn } from 'react-icons/fi';
 import Rating from '../Home/Stars';
-function MovieInfo({ movie ,setModalOpen}) {
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
+function MovieInfo({ movie, setModalOpen, DownloadMovieVideo, progress }) {
+    const navigate = useNavigate();
+    // Retrieve user authentication status from Redux
+    const { userInfo } = useSelector((state) => state.userLogin);
+
+    const handleWatchClick = () => {
+        // Check if user is logged in
+        if (userInfo) {
+            navigate(`/watch/${movie?._id}`);
+        } else {
+            // Show toast message if not logged in
+            toast.info("You need to log in to watch");
+            navigate('/login');
+        }
+    };
+
     return (
         <div className='w-full xl:h-screen relative text-white'>
             <img
@@ -47,26 +65,31 @@ function MovieInfo({ movie ,setModalOpen}) {
                                 </div>
                                 {/* language */}
                                 <div className='col-span-2 flex-colo font-medium text-sm'>
-                                    <p >Language : {" "}
+                                    <p>Language : {" "}
                                         <span className='ml-2 truncate'></span>{movie?.language}
                                     </p>
                                 </div>
                                 {/* watch button */}
                                 <div className='sm:col-span-2 col-span-3 flex justify-end font-medium text-sm'>
-                                    <Link to={`/watch/${movie?._id}`} 
-                                        className="bg-dry py-4 hover:bg-subMain trasitions border-2 border-subMain rounded-full flex-rows gap-4 w-full sm:py-3"
+                                    <button
+                                        onClick={handleWatchClick}
+                                        className="bg-dry py-4 hover:bg-subMain transitions border-2 border-subMain rounded-full flex-rows gap-4 w-full sm:py-3"
                                     >
-                                        <FaPlay className='w-3 h-3' /> Watch
-                                    </Link>
+                                        <FaPlay className='w-3 h-3' /> 
+                                        {userInfo ? "Watch" : "Log in to watch"}
+                                    </button>
                                 </div>
                             </div>
                             { /* rating */}
                             <div className="flex mb-6 text-lg gap-x text-star">
-                                <Rating value={movie?.rate}/>
+                                <Rating value={movie?.rate} />
                             </div>
                         </div>
                         <div className='col-span-2 md:mt-0 mt-2 flex justify-end'>
-                            <button className='md:w-1/4 w-full relative flex-colo bg-subMain hover:bg-transparent border-2 border-subMain transition md:h-64 h-20 rounded font-medium '>
+                            <button 
+                            disabled={progress}
+                            onClick={() => DownloadMovieVideo(movie?.video , movie?.name) }
+                            className='md:w-1/4 w-full relative flex-colo bg-subMain hover:bg-transparent border-2 border-subMain transition md:h-64 h-20 rounded font-medium '>
                                 <div className='flex-rows gap-6 text-md uppercase tracking-widest absolute md:rotate-90'>
                                     Download <FiLogIn className='w-6 h-6' />
                                 </div>

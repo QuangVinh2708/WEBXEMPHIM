@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'; // import useState
+import React, { useContext, useEffect, useState } from 'react'; // import useState
 import Layout from '../Layout/Layout';
 import { useParams, Link } from 'react-router-dom';
 import { BiArrowBack } from 'react-icons/bi';
@@ -7,12 +7,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMovieByIdAction } from '../Redux/Actions/MoviesActions';
 import Loader from '../Components/Notfications/Loader';
 import { RiMovie2Line } from 'react-icons/ri';
-import { IfMovieLiked, LikeMovie } from '../Context/Functionnalities';
+import { DownloadVideo, IfMovieLiked, LikeMovie } from '../Context/Functionnalities';
+import { SidebarContext } from '../Context/DrawerContext';
+import FileSaver from 'file-saver';
 
 function WatchPage() {
     let { id } = useParams();
     const dispatch = useDispatch();
     const [play, setPlay] = useState(false); // useState properly imported
+    const { progress, setprogress } = useContext(SidebarContext)
+
     const sameClass = "w-full gap-6 flex-colo min-h-hscreen"
 
     // user Selector
@@ -24,6 +28,15 @@ function WatchPage() {
 
     // if like function
     const isLiked = (movie) => IfMovieLiked(movie)
+
+    const DownloadMovieVideo = async (videoUrl, name) => {
+        await DownloadVideo(videoUrl, setprogress).then((data) => {
+            setprogress(0);
+            FileSaver.saveAs(data, name);
+        });
+    };
+
+
     // use Effect
     useEffect(() => {
         //movie id
@@ -51,7 +64,11 @@ function WatchPage() {
                                 transitions bg-opacity-30 rounded px-4 py-3 text-sm`}>
                                 <FaHeart />
                             </button>
-                            <button className="bg-subMain flex-rows gap-2 hover:text-main transitions text-white rounded px-8 font-medium py-3 text-sm">
+                            <button 
+                            disabled={progress > 0 && progress < 100}
+                            onClick={() => DownloadMovieVideo(movie?.video , movie?.name)}
+                            
+                            className="bg-subMain flex-rows gap-2 hover:text-main transitions text-white rounded px-8 font-medium py-3 text-sm">
                                 <FaCloudDownloadAlt /> Download
                             </button>
                         </div>

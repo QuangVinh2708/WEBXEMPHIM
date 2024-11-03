@@ -103,13 +103,13 @@ export const userChangePasswordReducer = (state = {}, action) => {
 // GET FAVOURITE MOVIES
 export const userGetFavoriteMoviesReducer = (state = { likedMovies: [] }, action) => {
   switch (action.type) {
-      case userConstants.GET_FAVOURITE_MOVIES_REQUEST:
+      case userConstants.GET_FAVORITE_MOVIES_REQUEST:
           return { isLoading: true };
-      case userConstants.GET_FAVOURITE_MOVIES_SUCCESS:
+      case userConstants.GET_FAVORITE_MOVIES_SUCCESS:
           return { isLoading: false, likedMovies: action.payload };
-      case userConstants.GET_FAVOURITE_MOVIES_FAIL:
+      case userConstants.GET_FAVORITE_MOVIES_FAIL:
           return { isLoading: false, isError: action.payload };
-      case userConstants.GET_FAVOURITE_MOVIES_RESET:
+      case userConstants.GET_FAVORITE_MOVIES_RESET:
           return { likedMovies: [] };
       default:
           return state;
@@ -120,13 +120,13 @@ export const userGetFavoriteMoviesReducer = (state = { likedMovies: [] }, action
 // DELETE FAVOURITE MOVIES 
 export const userDeleteFavoriteMoviesReducer = (state = {}, action) => {
   switch (action.type) {
-    case userConstants.DELETE_FAVOURITE_MOVIES_REQUEST:
+    case userConstants.DELETE_FAVORITE_MOVIES_REQUEST:
         return { isLoading: true };
-    case userConstants.DELETE_FAVOURITE_MOVIES_SUCCESS:
+    case userConstants.DELETE_FAVORITE_MOVIES_SUCCESS:
         return { isLoading: false, isSuccess: true };
-    case userConstants.DELETE_FAVOURITE_MOVIES_FAIL:
+    case userConstants.DELETE_FAVORITE_MOVIES_FAIL:
         return { isLoading: false, isError: action.payload };
-    case userConstants.DELETE_FAVOURITE_MOVIES_RESET:
+    case userConstants.DELETE_FAVORITE_MOVIES_RESET:
         return {};
     default:
         return state;

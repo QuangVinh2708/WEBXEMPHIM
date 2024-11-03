@@ -1,4 +1,8 @@
 import * as userConstants from "../Constants/userConstants";
+import * as movieConstants from "../Constants/MoviesConstants";
+import * as categoriesConstants from "../Constants/CategoriesConstants";
+
+
 import * as userApi from "../APIs/userServices";
 
 import { ErrorsAction, tokenProtection } from "../Protection";
@@ -37,6 +41,27 @@ const logoutAction = () => (dispatch) => {
     dispatch({ type: userConstants.USER_LOGOUT });
     dispatch({ type: userConstants.USER_LOGIN_RESET });
     dispatch({ type: userConstants.USER_REGISTER_RESET });
+    dispatch({ type: userConstants.DELETE_FAVORITE_MOVIES_RESET });
+    dispatch({ type: userConstants.USER_UPDATE_PROFILE_RESET });
+    dispatch({ type: userConstants.USER_DELETE_PROFILE_RESET });
+    dispatch({ type: userConstants.USER_CHANGE_PASSWORD_RESET });
+    dispatch({ type: userConstants.GET_FAVORITE_MOVIES_RESET });
+    dispatch({ type: userConstants.GET_ALL_USERS_RESET });
+    dispatch({ type: userConstants.DELETE_USERS_RESET });
+    dispatch({ type: userConstants.LIKE_MOVIE_RESET });
+
+    dispatch({ type: movieConstants.MOVIE_DETAILS_RESET });
+    dispatch({ type: movieConstants.CREATE_REVIEW_RESET });
+    dispatch({ type: movieConstants.CREATE_MOVIE_RESET });
+    dispatch({ type: movieConstants.RESET_CAST });
+    dispatch({ type: movieConstants.UPDATE_MOVIE_RESET });
+
+    dispatch({ type: categoriesConstants.CREATE_CATEGORY_RESET });
+dispatch({ type: categoriesConstants.UPDATE_CATEGORY_RESET });
+dispatch({ type: categoriesConstants.DELETE_CATEGORY_RESET });
+
+
+
 };
 
 const updateProfileAction = (user) => async (dispatch ,getState) => {
@@ -93,32 +118,32 @@ const changePasswordAction = (passwords) => async (dispatch, getState) => {
 // get all favourite movies action 
 const getFavoriteMoviesAction = () => async (dispatch, getState) => {
     try {
-        dispatch({ type: userConstants.GET_FAVOURITE_MOVIES_REQUEST});
+        dispatch({ type: userConstants.GET_FAVORITE_MOVIES_REQUEST});
         const respone = await userApi.getFavouriteMovies(
             tokenProtection(getState)
         );
         dispatch({
-            type: userConstants.GET_FAVOURITE_MOVIES_SUCCESS,
+            type: userConstants.GET_FAVORITE_MOVIES_SUCCESS,
             payload: respone,
         });
     } catch (error) {
-        ErrorsAction( error, dispatch, userConstants.GET_FAVOURITE_MOVIES_FAIL);
+        ErrorsAction( error, dispatch, userConstants.GET_FAVORITE_MOVIES_FAIL);
     }
 };
 
 // delete all favourite movies action
 const deleteFavoriteMoviesAction = () => async (dispatch, getState) => {
     try {
-        dispatch({ type: userConstants.DELETE_FAVOURITE_MOVIES_REQUEST});
+        dispatch({ type: userConstants.DELETE_FAVORITE_MOVIES_REQUEST});
             await userApi.deleteFavoriteMovies(
             tokenProtection(getState)
         );
         dispatch({
-            type: userConstants.DELETE_FAVOURITE_MOVIES_SUCCESS,
+            type: userConstants.DELETE_FAVORITE_MOVIES_SUCCESS,
         });
         toast.success("Favourite Movies Deleted");
     } catch (error) {
-        ErrorsAction( error, dispatch, userConstants.DELETE_FAVOURITE_MOVIES_FAIL);
+        ErrorsAction( error, dispatch, userConstants.DELETE_FAVORITE_MOVIES_FAIL);
     }
 };
 

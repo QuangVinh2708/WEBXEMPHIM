@@ -74,9 +74,8 @@ function EditMovie() {
 
 
     useEffect(() => {
-        if (movie?._id !== id) {
-            dispatch(getMovieByIdAction(id));
-        } else {
+        // Only set form values if movie data is loaded and matches the current `id`
+        if (movie?._id === id) {
             setValue("name", movie?.name);
             setValue("time", movie?.time);
             setValue("language", movie?.language);
@@ -86,24 +85,28 @@ function EditMovie() {
             setImageWithoutTitle(movie?.image);
             setImageTitle(movie?.titleImage);
             setVideoUrl(movie?.video);
+        } else {
+            dispatch(getMovieByIdAction(id));
         }
 
-        // if madal is false then reset cast
-        if (modalOpen === false) {
-            setCast();
+        // Reset cast selection only when modal is closed
+        if (!modalOpen) {
+            setCast(null);
         }
-        // if its success then reset form and navigate to addMovie
+
+
+    }, [dispatch, id, movie, modalOpen, setValue, isSuccess, editError, navigate]);
+
+    useEffect(() => {
         if (isSuccess) {
-
             dispatch({ type: "UPDATE_MOVIE_RESET" });
             navigate(`/edit/${id}`);
         }
-        // if error then show error
         if (editError) {
             toast.error("Something went wrong");
             dispatch({ type: "UPDATE_MOVIE_RESET" });
         }
-    }, [dispatch, id, movie, modalOpen, setValue, isSuccess, editError, navigate]);
+    }, [isSuccess, editError, dispatch, navigate, id]);
 
     return (
         <SideBar>

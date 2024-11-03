@@ -34,3 +34,18 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server running in http://localhost:${PORT}`);
 });
+
+
+const router = express.Router();
+
+router.get('/get-signed-url', async (req, res) => {
+  const { fileName } = req.query;
+  try {
+    const url = await generateSignedUrl(fileName);
+    res.json({ url });
+  } catch (error) {
+    res.status(500).json({ error: "Failed to generate signed URL" });
+  }
+});
+
+export default router;
