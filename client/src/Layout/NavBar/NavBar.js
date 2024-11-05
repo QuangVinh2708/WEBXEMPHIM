@@ -56,13 +56,13 @@ function NavBar() {
                     {/* Menus*/}
                     <div className='col-span-3 font-medium text-sm hidden xl:gap-14 2xl:gap-20 justify-between lg:flex xl:justify-end items-center'>
                         <NavLink to="/movies" className={Hover}>
-                            Movies
+                            Phim 
                         </NavLink>
                         <NavLink to="/about-us" className={Hover}>
-                            About Us
+                            Thông tin 
                         </NavLink>
                         <NavLink to="/contact-us" className={Hover}>
-                            Contact Us
+                            Liên hệ 
                         </NavLink>
                         <NavLink to={
                             userInfo?.isAdmin ? "/dashboard" : userInfo ? "/profile" : "/login"

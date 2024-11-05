@@ -1,5 +1,4 @@
 import React, {  Fragment } from "react";
-
 import { Listbox, Transition } from "@headlessui/react";
 import { FaAngleDown, FaCheck } from "react-icons/fa";
 import { LanguageData, RatesData, TimesData, YearData } from "../Data/FilterData";
@@ -8,7 +7,7 @@ import { LanguageData, RatesData, TimesData, YearData } from "../Data/FilterData
 
 function Filters(props) {
   const {
-    categories,
+    categories ,
     category,
     setCategory,
     language,

@@ -93,15 +93,15 @@ function Footer() {
                         </Link>
                         <p className="leading-7 text-sm text-border mt-3">
                             <span>
-                                Lorem 196 Andrew Road , Suite 200 , <br /> New York , NY 10007
+                            280 An Dương Vương phường 3 quận 5 <br/>Thành phố Hồ Chí Minh.
                             </span>
                             <br/>
                             <span>
-                                Tell : +847 985 958 13
+                                Số Hotline : 0941983908
                             </span>
                             <br/>
                             <span>
-                                Email:Quangvinhh2004@gmail.com
+                                Email:DVP@gmail.com
                             </span>
                         </p>
                     </div>
