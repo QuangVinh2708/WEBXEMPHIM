@@ -120,16 +120,16 @@ function EditMovie() {
                             <RiMovie2Line />
                         </div>
                         <p className="text-border text-sm">
-                            Something went wrong
+                            Đang gặp lỗi
                         </p>
                     </div>
                     ) : (
                         <div className="flex flex-col gap-6">
-                            <h2 className="text-xl font-bold">Edit "{movie?.name}"</h2>
+                            <h2 className="text-xl font-bold">Chỉnh sửa "{movie?.name}"</h2>
                             <div className='w-full grid md:grid-cols-2 gap-6'>
                                 <div className="w-full">
                                     <Input
-                                        label="Movie Title"
+                                        label="Tên phim"
                                         placeholder="Game of Thrones"
                                         type="text"
                                         bg={true}
@@ -141,7 +141,7 @@ function EditMovie() {
 
                                 <div className="w-full">
                                     <Input
-                                        label="Hours"
+                                        label="Thời lượng "
                                         placeholder="2hr"
                                         type="number"
                                         bg={true}
@@ -155,7 +155,7 @@ function EditMovie() {
                             <div className='w-full grid md:grid-cols-2 gap-6'>
                                 <div className="w-full">
                                     <Input
-                                        label="Language Used"
+                                        label="Ngôn ngữ sử dụng"
                                         placeholder="English"
                                         type="text"
                                         bg={true}
@@ -167,7 +167,7 @@ function EditMovie() {
 
                                 <div className="w-full">
                                     <Input
-                                        label="Year of Release"
+                                        label="Năm phát hành"
                                         placeholder="2022"
                                         type="number"
                                         bg={true}
@@ -183,7 +183,7 @@ function EditMovie() {
                                 {/*img without title */}
                                 <div className='flex flex-colo gap-2'>
                                     <p className='text-border font-semibold text-sm'>
-                                        Image without Title
+                                        Hình không có tiêu đề
                                     </p>
                                     <Uploder setImageUrl={setImageWithoutTitle} />
                                     <ImagePreview image={imageWithoutTitle} name="imageWithoutTitle" />
@@ -191,7 +191,7 @@ function EditMovie() {
                                 {/*img without title */}
                                 <div className='flex flex-colo gap-2'>
                                     <p className='text-border font-semibold text-sm'>
-                                        Image with Title
+                                        Hình có tiêu đề
                                     </p>
                                     <Uploder setImageUrl={setImageTitle} />
                                     <ImagePreview image={imageTitle} name="imageTitle" />
@@ -201,8 +201,8 @@ function EditMovie() {
                             {/*DESCRIPTION */}
                             <div className="w-full">
                                 <Message
-                                    label="Movie Description"
-                                    placeholder="Make it short and sweet"
+                                    label="Mô tả"
+                                    placeholder="Ngắn gọn tuyệt vời"
                                     name="desc"
                                     register={{ ...register("desc") }}
                                 />
@@ -212,7 +212,7 @@ function EditMovie() {
                             {/*CATEGORY */}
                             <div className="text-sm w-full">
                                 <Select
-                                    label="Movie Category"
+                                    label="Thể loại phim"
                                     options={categories?.length > 0 ? categories : []}
                                     name="category"
                                     register={{ ...register("category") }}
@@ -223,12 +223,12 @@ function EditMovie() {
                             {/*MOVIE VIDEO*/}
                             <div className='flex flex-colo gap-2 w-full '>
                                 <label className='text-border font-semibold text-sm'>
-                                    Movie Video
+                                    Video phim
                                 </label>
                                 <div className={`w-full grid ${videoUrl && "md:grid-cols-2"} gap-6`}>
                                     {videoUrl && (
                                         <div className="w-full bg-main text-sm text-subMain py-4 border border-border rounded flex-colo">
-                                            Video Uploaded!!!
+                                            Video phim đã được đăng
                                         </div>
                                     )}
                                     <Uploder setImageUrl={setVideoUrl} />

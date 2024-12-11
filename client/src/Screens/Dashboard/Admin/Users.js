@@ -49,7 +49,7 @@ function Users() {
                         users={true} 
                         onDeleteFunction={deleteMoviesHandler} />
                     ) : (
-                        <Empty message="You don't have any user" />
+                        <Empty message="Bạn không có người dùng nào " />
                     )
                 }
             </div>

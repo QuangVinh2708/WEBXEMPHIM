@@ -49,7 +49,7 @@ function NavBar() {
                                 type="search" 
                                 value={search}
                                 onChange={(e) => setSearch(e.target.value)}
-                                placeholder='Search Movie Name from here'
+                                placeholder='Tìm kiếm phim ở đây '
                                 className='font-medium placeholder:text-border text-sm w-11/12 h-12 bg-transparent border-none px-2 text-black' />
                         </form>
                     </div>
@@ -69,7 +69,7 @@ function NavBar() {
                         } className={Hover}>
                             {
                                 userInfo ? (
-                                    <img src={userInfo?.image ? userInfo?.image:""} alt={userInfo?.fullName} className='w-8 h-8 rounded-full border object-cover border-subMain'/>
+                                    <img src={userInfo?.image ? userInfo?.image:"https://res.cloudinary.com/dwfmpiozq/image/upload/v1730567122/Logo_m2ooop.png"} alt={userInfo?.fullName} className='w-8 h-8 rounded-full border object-cover border-subMain'/>
                                 ) : (<CgUser className="w-8 h-8" />)
                             }
                             

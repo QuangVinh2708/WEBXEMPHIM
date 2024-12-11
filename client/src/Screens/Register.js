@@ -57,13 +57,13 @@ function Register() {
                 <form
                     onSubmit={handleSubmit(onSubmit)} className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:2-3/5 bg-dry rounded-lg border-border">
                     <img
-                        src="/images/logo.png"
+                        src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1730567122/Logo_m2ooop.png"
                         alt="logo"
                         className="w-full h-12 object-contain"
                     />
                      <div className='w-full'>
                         <Input
-                            label="FullName"
+                            label="Tên người dùng"
                             placeholder="DVP"
                             type="text"
                             name="fullName"
@@ -86,7 +86,7 @@ function Register() {
                     </div>
                     <div className='w-full'>
                         <Input
-                            label="Password"
+                            label="Mật khẩu"
                             placeholder="*******"
                             type="password"
                             name="password"
@@ -104,14 +104,14 @@ function Register() {
                             "Loading..."
                         ) : (
                             <>
-                                <FiLogIn /> Sign Up
+                                <FiLogIn /> Đăng ký
                             </>
                         )}
                     </button>
                     <p className="text-center text-border">
-                        Already have an account?{""}
-                        <Link to="/register" className="text-dryGray font-semibold ml-2">
-                            Sign In
+                        Đã có tài khoản?{""}
+                        <Link to="/login" className="text-dryGray font-semibold ml-2">
+                            Đăng nhập
                         </Link>
                     </p>
                 </form></div>

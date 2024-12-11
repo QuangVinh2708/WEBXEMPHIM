@@ -33,53 +33,53 @@ function SideBar({children}) {
             icon : BsFillGridFill
         },
         {
-            name:"Movies List",
+            name:"Danh sách phim",
             link :"/movieslist",
             icon : FaListAlt,
         },
         {
-            name:"Add Movie",
+            name:"Thêm phim",
             link :"/addmovie",
             icon : RiMovie2Fill,
         },
         {
-            name:"Categories",
+            name:"Thể loại",
             link :"/categories",
             icon : HiViewGridAdd
         },
         {
-            name:"Users",
+            name:"Người dùng",
             link :"/users",
             icon : FaUsers,
         },
         {
-            name:"Update Profile",
+            name:"Thông tin tài khoản",
             link :"/profile",
             icon : FiSettings
         },
         {
-            name:"Favorites Movies",
+            name:"Danh sách yêu thích",
             link :"/favorites",
             icon : FaHeart,
         },
         {
-            name:"Change Password",
+            name:"Thay đổi mật khẩu",
             link :"/password",
             icon : RiLockPasswordLine
         }
     ] : userInfo ? [
         {
-            name:"Update Profile",
+            name:"Thông tin tài khoản",
             link :"/profile",
             icon : FiSettings
         },
         {
-            name:"Favorites Movies",
+            name:"Danh sách yêu thích",
             link :"/favorites",
             icon : FaHeart,
         },
         {
-            name:"Change Password",
+            name:"Thay đổi mật khẩu",
             link :"/password",
             icon : RiLockPasswordLine
         }
@@ -107,7 +107,7 @@ const Hover = ({isActive}) =>
                             ))
                         }
                         <button onClick={logOutHandler} className={`${inActive} ${Hover} w-full`}>
-                        <RiLogoutCircleLine/> Log Out 
+                        <RiLogoutCircleLine/> Đăng xuất
                         </button>
                     </div>
                     <div

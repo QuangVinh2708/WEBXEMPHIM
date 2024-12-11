@@ -57,10 +57,10 @@ function CategoryModal({ modalOpen, setModalOpen, category }) {
     return (
         <MainModal modalOpen={modalOpen} setModalOpen={setModalOpen}>
             <div className='inline-block sm-w-4/5 border border-border md:w-3/5 w-full align-middle p-10 overflow-y-auto h-full bg-main text-white rounded-2xl'>
-                <h2 className='text-3xl font-bold'>{category ? "Update" : "Create"}</h2>
+                <h2 className='text-3xl font-bold'>{category ? "Cập nhật" : "Tạo"}</h2>
                 <form className='flex flex-col gap-6 text-left mt-6' onSubmit={submitHandler}>
                     <Input
-                        label="Category Name"
+                        label="Tên thể loại"
                         placeholder="Actions"
                         type="text"
                         bg={false}
@@ -71,7 +71,7 @@ function CategoryModal({ modalOpen, setModalOpen, category }) {
                         disabled={isLoading || upLoading}
                         type='submit'
                         className='w-full flex-colo gap-4 py-3 font-bold text-lg transitions hover:bg-dry rounded bg-subMain text-white'>
-                        {isLoading || upLoading ? "Loading ..." : category ? "Update" : "Create"}
+                        {isLoading || upLoading ? "Đang ..." : category ? "Cập nhật" : "Tạo"}
                     </button>
                 </form>
             </div>

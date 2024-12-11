@@ -18,7 +18,7 @@ function MovieInfo({ movie, setModalOpen, DownloadMovieVideo, progress }) {
             navigate(`/watch/${movie?._id}`);
         } else {
             // Show toast message if not logged in
-            toast.info("You need to log in to watch");
+            toast.info("Bạn cần đăng nhập để xem");
             navigate('/login');
         }
     };
@@ -65,7 +65,7 @@ function MovieInfo({ movie, setModalOpen, DownloadMovieVideo, progress }) {
                                 </div>
                                 {/* language */}
                                 <div className='col-span-2 flex-colo font-medium text-sm'>
-                                    <p>Language : {" "}
+                                    <p>Ngôn ngữ : {" "}
                                         <span className='ml-2 truncate'></span>{movie?.language}
                                     </p>
                                 </div>
@@ -76,7 +76,7 @@ function MovieInfo({ movie, setModalOpen, DownloadMovieVideo, progress }) {
                                         className="bg-dry py-4 hover:bg-subMain transitions border-2 border-subMain rounded-full flex-rows gap-4 w-full sm:py-3"
                                     >
                                         <FaPlay className='w-3 h-3' /> 
-                                        {userInfo ? "Watch" : "Log in to watch"}
+                                        {userInfo ? "Xem" : "Đăng nhập để xem"}
                                     </button>
                                 </div>
                             </div>

@@ -66,25 +66,25 @@ function Table({ data, admin ,onDeleteHandler}) {
                 <thead>
                     <tr className="bg-dryGray">
                         <th scope="col" className={`${Head}`}>
-                            Image
+                            Hình ảnh
                         </th>
                         <th scope="col" className={`${Head}`}>
-                            Name
+                            Tên phim    
                         </th>
                         <th scope="col" className={`${Head}`}>
-                            Category
+                            Thể loại 
                         </th>
                         <th scope="col" className={`${Head}`}>
-                            Language
+                            Ngôn ngữ
                         </th>
                         <th scope="col" className={`${Head}`}>
-                            Year
+                            Năm
                         </th>
                         <th scope="col" className={`${Head}`}>
-                            Hours
+                            Thời lượng
                         </th>
                         <th scope="col" className={`${Head} text-end`} >
-                            Actions
+                            Chức năng
                         </th>
                     </tr>
                 </thead>

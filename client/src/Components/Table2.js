@@ -72,22 +72,22 @@ function Table2({ data, users, OnEditFunction ,onDeleteFunction}) {
                     <tr className="bg-dryGray">
                         {users ? (
                             <>
-                                <th scope="col" className={`${Head}`}>Image</th>
+                                <th scope="col" className={`${Head}`}>Hình ảnh </th>
                                 <th scope="col" className={`${Head}`}>Id</th>
-                                <th scope="col" className={`${Head}`}>Date</th>
-                                <th scope="col" className={`${Head}`}>Full Name</th>
+                                <th scope="col" className={`${Head}`}>Ngày đăng ký</th>
+                                <th scope="col" className={`${Head}`}>Tên người dùng</th>
                                 <th scope="col" className={`${Head}`}>Email</th>
-                                <th scope="col" className={`${Head}`}>Role</th>
+                                <th scope="col" className={`${Head}`}>Vai trò</th>
 
                             </>
                         ) : (
                             <>
                                 <th scope="col" className={`${Head}`}>Id</th>
-                                <th scope="col" className={`${Head}`}>Date</th>
-                                <th scope="col" className={`${Head}`}>Name</th>
+                                <th scope="col" className={`${Head}`}>Ngày đăng ký  </th>
+                                <th scope="col" className={`${Head}`}>Thể loại</th>
                             </>
                         )}
-                        <th scope="col" className={`${Head} text-end`}>Actions</th>
+                        <th scope="col" className={`${Head} text-end`}>Chức năng</th>
                     </tr>
                 </thead>
                 <tbody className='bg-main divide-y divide-gray-800'>

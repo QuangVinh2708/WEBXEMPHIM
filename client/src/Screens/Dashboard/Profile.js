@@ -63,7 +63,7 @@ function Profile() {
     return (
         <SideBar>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-                <h2 className="text-xl font-bold">Profile</h2>
+                <h2 className="text-xl font-bold">Thông tin </h2>
                 <div className='w-full grid lg:grid-cols-12 gap-6'>
                     <div className='col-span-10'>
                         <Uploder setImageUrl={setImageUrl} />
@@ -79,7 +79,7 @@ function Profile() {
                 
                 <div className='w-full'>
                     <Input
-                        label="FullName"
+                        label="Tên người dùng"
                         placeholder="DVP"
                         type="text"
                         name="fullName"
@@ -101,13 +101,13 @@ function Profile() {
                         disabled ={deleteLoading || isLoading }
                         className="bg-subMain font-medium transitions hover:bg-main border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto"
                     >
-                        { deleteLoading ? "Deleting..." : "Delete Account"}
+                        { deleteLoading ? "Đang xóa..." : "Xóa tài khoản"}
                     </button>
                     <button
                         disabled ={deleteLoading || isLoading }
                         className="bg-main font-medium transitions hover:bg-subMain border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto"
                     >
-                        { isLoading ? "Updating..." : "Update Profile"}
+                        { isLoading ? "Đang cập nhật..." : "Cập nhật"}
                     </button>
                 </div>
             </form>

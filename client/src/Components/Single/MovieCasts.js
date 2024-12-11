@@ -8,7 +8,7 @@ import Titles from '../Titles';
 function MovieCasts({movie}) {
     return (
         <div className='my-12'>
-            <Titles title="Casts" Icon={FaUsers} />
+            <Titles title="Diễn viên" Icon={FaUsers} />
             <div className='mt-10'>
                 <Swiper
                     autoplay={{

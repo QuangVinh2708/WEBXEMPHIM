@@ -60,19 +60,19 @@ function Dashboard() {
         {
             bg: "bg-orange-600", // Fixed class name for Tailwind
             icon: FaRegListAlt,
-            Titles: "Total Movies",
+            Titles: "Số lượng phim",
             total: isLoading ? "Loading..." : totalMovies || 0,
         },
         {
             bg: "bg-blue-700",
             icon: HiViewGridAdd,
-            Titles: "Total Categories",
+            Titles: "Số lượng thể loại",
             total: catLoading ? "Loading..." : categories?.length || 0,
         },
         {
             bg: "bg-green-600",
             icon: FaUser,
-            Titles: "Total User",
+            Titles: "Số lượng người dùng ",
             total: userLoading ? "Loading..." : users?.length || 0
         },
     ];
@@ -95,7 +95,7 @@ function Dashboard() {
                     </div>
                 ))}
             </div>
-            <h3 className='text-md font-medium my-6 text-border'> Recent Movies</h3>
+            <h3 className='text-md font-medium my-6 text-border'> Phim gần đây</h3>
             {isLoading || deleteLoading ? (
                 <Loader />
             ) : movies.length > 0 ? (

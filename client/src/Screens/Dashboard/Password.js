@@ -49,10 +49,10 @@ function Password() {
     return (
         <SideBar>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
-                <h2 className="text-xl font-bold">Change Password</h2>
+                <h2 className="text-xl font-bold">Thay đổi mật khẩu</h2>
                 <div className='w-full'>
                     <Input
-                        label="Previous Password"
+                        label="Mật khẩu cũ "
                         placeholder="********"
                         type="password"
                         bg={true}
@@ -63,7 +63,7 @@ function Password() {
                 </div>
                 <div className='w-full'>
                     <Input
-                        label="New Password"
+                        label="Mật khẩu mới"
                         placeholder="********"
                         type="password"
                         bg={true}
@@ -74,7 +74,7 @@ function Password() {
                 </div>
                 <div className='w-full'>
                     <Input
-                        label="Confirm Password"
+                        label="Xác nhận mật khẩu"
                         placeholder="********"
                         type="password"
                         bg={true}
@@ -91,7 +91,7 @@ function Password() {
                         type="submit" 
                         className="bg-main font-medium transitions hover:bg-subMain border border-subMain text-white py-3 px-6 rounded w-full sm:w-auto"
                     >
-                        { isLoading ? "Changing..." : "Change Password" }
+                        { isLoading ? "Đang..." : "Thay đổi" }
                     </button>
                 </div>
             </form>

@@ -63,8 +63,7 @@ function MovieRates({ movie }) {
                         Review "{movie?.name}"
                     </h3>
                     <p className="text-sm leading-7 font-medium text-border">
-                        Write a review for this movie
-                    </p>
+                        Hãy cảm nhận bộ phim bạn đã xem nào </p>
                     <div className="text-sm w-full">
                         <Select
                             label="Select Rating"
@@ -85,7 +84,7 @@ function MovieRates({ movie }) {
                             name="comment"
                             register={{ ...register("comment") }}
                             label="Message"
-                            placeholder="Make it short and sweet ..." />
+                            placeholder=" .................." />
                         {errors.comment && <InlineError text={errors.comment.message} />}
 
                     </div>
@@ -98,7 +97,7 @@ function MovieRates({ movie }) {
                             className="bg-subMain text-white py-4 w-full flex-colo rounded"
                         >
                             {
-                                isLoading ? "Loading..." : "Submit"
+                                isLoading ? "Đang tải..." : "Đăng"
                             }
                         </button>
                     ) : (
@@ -106,7 +105,7 @@ function MovieRates({ movie }) {
                             to="/login"
                             className="bg-main border border-dashed border-border text-subMain py-4 w-full flex-colo rounded"
                         >
-                            Login to review this movie
+                            Hãy đăng nhập bạn mới có thể đánh giá
                         </Link>
                     )}
 

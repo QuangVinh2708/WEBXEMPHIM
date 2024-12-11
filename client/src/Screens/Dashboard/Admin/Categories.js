@@ -25,7 +25,7 @@ function Categories() {
         (state).categoryDelete
     );
     const adminDeletecategory = (id) => {
-        if (window.confirm("Are you sure you want to delete this category?")) {
+        if (window.confirm("Bạn có muốn xóa toàn bộ thể loại không?")) {
             dispatch(deleteCategoryAction(id));
         }
         
@@ -55,11 +55,11 @@ function Categories() {
             <CategoryModal modalOpen={modalOpen} setModalOpen={setModalOpen} category={category}/>
             <div className="flex flex-col gap-6">
                 <div className='flex-btn gap-2'>
-                <h2 className="text-xl font-bold">Categories</h2>
+                <h2 className="text-xl font-bold">Các thể loại</h2>
                 <button
                 onClick={()=> setModalOpen(true)} 
                 className='bg-subMain flex-rows gap-4 font-medium transitions hover:bg-Main border border-subMain text-white py-2 px-4 rounded'>
-                    <HiPlusCircle/>Create
+                    <HiPlusCircle/>Tạo
                 </button>
                 </div>
                 {
@@ -73,7 +73,7 @@ function Categories() {
                         onDeleteFunction={adminDeletecategory}
                         />
                     ) : (
-                        <Empty message="You have no categoris" />
+                        <Empty message="Không tồn tại thể loại nào" />
                     )
                 }
 

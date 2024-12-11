@@ -73,7 +73,7 @@ function Login() {
                     </div>
                     <div className='w-full'>
                         <Input
-                            label="Password"
+                            label="Mật khẩu"
                             placeholder="**********"
                             type="password"
                             bg={true}
@@ -92,14 +92,14 @@ function Login() {
                             "Loading..."
                         ) : (
                             <>
-                                <FiLogIn /> Sign In
+                                <FiLogIn /> Đăng nhập
                             </>
                         )}
                     </button>
                     <p className="text-center text-border">
-                        Don't have an account?{" "}
+                        Chưa có tài khoản?{" "}
                         <Link to="/register" className="text-dryGray font-semibold ml-2">
-                            Sign up
+                            Đăng ký
                         </Link>
                     </p>
                 </form>
