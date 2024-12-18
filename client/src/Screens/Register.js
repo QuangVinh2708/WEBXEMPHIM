@@ -57,7 +57,7 @@ function Register() {
                 <form
                     onSubmit={handleSubmit(onSubmit)} className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:2-3/5 bg-dry rounded-lg border-border">
                     <img
-                        src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1730567122/Logo_m2ooop.png"
+                        src=""
                         alt="logo"
                         className="w-full h-12 object-contain"
                     />
