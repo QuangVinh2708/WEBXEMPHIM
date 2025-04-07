@@ -80,10 +80,10 @@ function TopRated({ movies, isLoading }) {
     const [nextEl, setNextEl] = useState(null);
     const [prevEl, setPrevEl] = useState(null);
     const classNames =
-        'hover:br-dry transitions text-sm rounded w-8 h-8 flex-colo bg-subMain text-white'
+        'hover:br-dry transitions text-sm rounded w-8 h-8 flex-colo bg-subMain text-white '
 
     return (
-        <div className='my-16'>
+        <div className='my-16 '>
             <Titles title='Top Rated' Icon={BsBookmarkStarFill} />
             <div className="mt-10">
                 {

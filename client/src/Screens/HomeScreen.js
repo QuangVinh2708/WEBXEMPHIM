@@ -40,8 +40,8 @@ function HomeScreen() {
     
 
     return(
-       <Layout>
-        <div className="container mx-auto min-h-screen px-2 mb-6">
+       <Layout  >
+        <div className="container mx-auto min-h-screen px-2 mb-6 bg-dry text-white">
             <Banner movies={movies} isLoading={isLoading}/>
             <PopularMovies movies={randomMovies} isLoading={randomLoading}/>
             <Promos />

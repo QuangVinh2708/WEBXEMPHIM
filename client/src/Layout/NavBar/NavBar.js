@@ -4,7 +4,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { FaSearch, FaHeart } from "react-icons/fa";
 import { CgUser } from "react-icons/cg";
 import { useSelector } from 'react-redux';
-function NavBar() {
+function NavBar({ transparent, absolute }) {
     const [search, setSearch] = useState("");
     const navigate = useNavigate()
     const { userInfo } = useSelector((state) => state.userLogin);
@@ -27,7 +27,11 @@ function NavBar() {
     
     return (
         <>
-            <div className='bg-main shadow-md sticky top-0 z-20'>
+            <div
+            className={`${
+                transparent ? 'bg-transparent shadow-none' : 'bg-main shadow-md'
+            } ${absolute ? 'absolute top-0 left-0 right-0' : 'sticky top-0'} z-50 bg-opacity-10 backdrop-blur-sm`}
+        >
                 <div className="container mx-auto py-6 px-2 lg:grid gap-10 grid-cols-7 justify-between items-center">
                     {/* LOGO*/}
                     <div className='col-span-1 lg:block hidden'>
@@ -75,8 +79,8 @@ function NavBar() {
                             
                         </NavLink>
                         <NavLink to="/favorites" className={' ${Hover} relative '}>
-                            <FaHeart className="w-6 h-6" />
-                            <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-5 -right-1">
+                            <FaHeart className="w-6 h-9 mr-10" />
+                            <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-3 -right-1 mr-9">
                                 {likedMovies?.length||0}
                                
                             </div>

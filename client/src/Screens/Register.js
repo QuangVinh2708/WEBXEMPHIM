@@ -52,10 +52,13 @@ function Register() {
     }, [userInfo, isSuccess, isError, navigate, dispatch]);
 
     return (
-        <Layout>
-            <div className="container mx-auto px-2 my-24 flex-colo">
+        <Layout hideFooter={true} transparentNav={true}>
+            <div
+                className="w-full h-screen flex-colo bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: 'url("https://res.cloudinary.com/dwfmpiozq/image/upload/v1743692824/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn_oopzdx.png")' }}
+            >
                 <form
-                    onSubmit={handleSubmit(onSubmit)} className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:2-3/5 bg-dry rounded-lg border-border">
+                    onSubmit={handleSubmit(onSubmit)} className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:2-3/5 bg-black rounded-lg border-border bg-opacity-60">
                     <img
                         src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1730567122/Logo_m2ooop.png"
                         alt="logo"
@@ -108,9 +111,9 @@ function Register() {
                             </>
                         )}
                     </button>
-                    <p className="text-center text-border">
+                    <p className="text-center text-fuchsia-50">
                         Đã có tài khoản?{""}
-                        <Link to="/login" className="text-dryGray font-semibold ml-2">
+                        <Link to="/login" className="text-red-600 font-semibold ml-2">
                             Đăng nhập
                         </Link>
                     </p>
