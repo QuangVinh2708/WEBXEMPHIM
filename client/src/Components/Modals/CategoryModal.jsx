@@ -36,23 +36,24 @@ function CategoryModal({ modalOpen, setModalOpen, category }) {
                 type: isError ? "CREATE_CATEGORY_RESET" : "UPDATE_CATEGORY_RESET"
             });
         }
-
+    
         if (isSuccess || upSuccess) {
-            toast.success("Category operation successful");
+            toast.success("Thao tác thể loại thành công");
             dispatch({
                 type: isSuccess ? "CREATE_CATEGORY_RESET" : "UPDATE_CATEGORY_RESET"
             });
-            setModalOpen(false); // Close modal on success
+            setModalOpen(false);
         }
-
-        if (category) {
-            setTitle(category?.title);
+    
+        if (modalOpen && category) {
+            setTitle(category.title);
         }
-
-        if (!modalOpen === false) {
+    
+        if (!modalOpen && !category) {
             setTitle("");
         }
-    }, [dispatch, isError, isSuccess, upError, category, modalOpen, upSuccess, setModalOpen]);
+    }, [dispatch, isError, isSuccess, upError, upSuccess, category, modalOpen, setModalOpen]);
+    
 
     return (
         <MainModal modalOpen={modalOpen} setModalOpen={setModalOpen}>
