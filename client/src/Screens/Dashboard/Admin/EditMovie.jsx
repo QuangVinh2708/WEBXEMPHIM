@@ -221,20 +221,43 @@ function EditMovie() {
                             </div>
 
                             {/*MOVIE VIDEO*/}
-                            <div className='flex flex-colo gap-2 w-full '>
-                                <label className='text-border font-semibold text-sm'>
-                                    Video phim
+                            <div className="w-full">
+                                <label className="text-border font-semibold text-sm mb-2 block">
+                                    Link nhúng video (YouTube embed)
                                 </label>
-                                <div className={`w-full grid ${videoUrl && "md:grid-cols-2"} gap-6`}>
-                                    {videoUrl && (
-                                        <div className="w-full bg-main text-sm text-subMain py-4 border border-border rounded flex-colo">
-                                            Video phim đã được đăng
-                                        </div>
-                                    )}
-                                    <Uploder setImageUrl={setVideoUrl} />
-                                </div>
-
+                                <Input
+                                    label=""
+                                    placeholder="https://www.youtube.com/embed/abc123"
+                                    type="text"
+                                    bg={true}
+                                    name="video"
+                                    value={videoUrl}
+                                    onChange={(e) => setVideoUrl(e.target.value)}
+                                />
+                                {videoUrl && (
+                                    <>
+                                        {(videoUrl.startsWith("https://") || videoUrl.startsWith("http://")) ? (
+                                            <div className="w-full mt-4 flex justify-center">
+                                                <div className="w-full max-w-3xl h-[400px] rounded overflow-hidden shadow-lg">
+                                                    <iframe
+                                                        src={videoUrl}
+                                                        title="Video Preview"
+                                                        frameBorder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowFullScreen
+                                                        className="w-full h-full"
+                                                    />
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <p className="text-red-600 mt-2 text-sm">
+                                                ❌ Link không hợp lệ. Hãy nhập đúng định dạng nhúng (embed URL).
+                                            </p>
+                                        )}
+                                    </>
+                                )}
                             </div>
+
                             {/*CASTS*/}
                             <div className='w-full grid lg:grid-cols-2 gap-6 items-start'>
                                 <div className='w-full'>

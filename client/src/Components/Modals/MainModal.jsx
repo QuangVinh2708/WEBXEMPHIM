@@ -35,12 +35,12 @@ function MainModal({ modalOpen, setModalOpen, children }) {
                             leaveFrom="opacity-100 scale-100"
                             leaveTo="opacity-0 scale-95"
                         >
-                            <div className="relative max-w-full w-screen rounded-xl p-8 text-white shadow-lg ">
+                            <div className="relative max-w-2xl w-screen rounded-xl p-8 text-white shadow-lg ">
                                 {/* Close Button */}
                                 <button
                                     onClick={() => setModalOpen(false)}
                                     type="button"
-                                    className="absolute top-5 right-5 transitions w-10 h-10 flex items-center justify-center text-base text-subMain bg-white rounded-full hover:bg-subMain hover:text-white"
+                                    className="absolute top-5 right-28 transitions w-10 h-10 flex items-center justify-center text-base text-subMain bg-white rounded-full hover:bg-subMain hover:text-white"
                                     ref={cancelButtonRef}
                                 >
                                     <IoClose size={24} />
