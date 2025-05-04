@@ -78,7 +78,7 @@ function WatchPage() {
                       <div className="w-full flex justify-center">
                       <div className="w-full max-w-900px h-[500px] rounded overflow-hidden shadow-lg">
                         <iframe
-                          src={`${movie?.video}?autoplay=1&showinfo=0&rel=0&modestbranding=1`}
+                          src={`${movie?.video}?autoplay=1&modestbranding=1&rel=0&controls=1&rel=1`}
                           title={movie?.name}
                           frameBorder="0"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

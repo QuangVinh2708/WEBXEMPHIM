@@ -3,24 +3,24 @@ import * as yup from "yup";
 const ReviewValidation = yup.object().shape({
   comment: yup
     .string()
-    .required("Comment is required")
-    .max(150, "Comment should be less than 150 characters"),
-  rating: yup.number().required("Select a rating"),
+    .required("Vui lòng nhập bình luận")
+    .max(150, "Bình luận không được vượt quá 150 ký tự"),
+  rating: yup.number().required("Vui lòng chọn đánh giá"),
 });
 
 const movieValidation = yup.object().shape({
   name: yup
-      .string()
-      .required("Please enter a movie name")
-      .max(50, "Movie name should be less than 50 characters"),
-  time: yup.number().required("Please enter a movie duration"),
-  language: yup.string().required("Please enter a movie language"),
-  year: yup.number().required("Please enter year of release"),
-  category: yup.string().required("Please select movie category"),
+    .string()
+    .required("Vui lòng nhập tên phim")
+    .max(50, "Tên phim không được vượt quá 50 ký tự"),
+  time: yup.number().required("Vui lòng nhập thời lượng phim"),
+  language: yup.string().required("Vui lòng nhập ngôn ngữ phim"),
+  year: yup.number().required("Vui lòng nhập năm phát hành"),
+  category: yup.string().required("Vui lòng chọn thể loại phim"),
   desc: yup
-      .string()
-      .required("Please enter a movie description")
-      .max(300, "Movie description should be less than 300 characters"),
+    .string()
+    .required("Vui lòng nhập mô tả phim")
+    .max(100000, "Mô tả phim không được vượt quá 1000 ký tự"),
 });
 
-export { ReviewValidation , movieValidation };
+export { ReviewValidation, movieValidation };

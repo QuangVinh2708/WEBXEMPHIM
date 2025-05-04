@@ -104,7 +104,7 @@ function AddMovie() {
                     <Input label="Tên phim" placeholder="Game of Thrones" type="text" bg={true} name="name" register={register("name")} />
                     {errors.name && <InlineError text={errors.name.message} />}
 
-                    <Input label="Thời lượng" placeholder="2hr" type="number" bg={true} name="time" register={register("time")} />
+                    <Input label="Thời lượng" placeholder="120 min " type="number" bg={true} name="time" register={register("time")} />
                     {errors.time && <InlineError text={errors.time.message} />}
                 </div>
 
