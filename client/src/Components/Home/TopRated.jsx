@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { IfMovieLiked, LikeMovie } from '../../Context/Functionnalities';
 
 const SwiperTop = ({ prevEl, nextEl, movies }) => {
-    const {isLoading} = useSelector((state) => state.userLikeMovie)
+    const { isLoading } = useSelector((state) => state.userLikeMovie)
     const dispatch = useDispatch()
     const userInfo = useSelector((state) => state.userLogin);
 
@@ -40,26 +40,25 @@ const SwiperTop = ({ prevEl, nextEl, movies }) => {
             {
                 movies?.map((movie, index) => (
                     <SwiperSlide key={index}>
-                        <div className="relative p-4 h-rate hovered border border-border bg-dry rounded-lg overflow-hidden">
+                        <div className="relative group h-rate border border-border bg-dry rounded-lg overflow-hidden">
                             <img
-                                src={movie.titleImage 
-                                    ? `${movie.titleImage}`
-                                    : "/images/user.png"
-                                }
+                                src={movie.titleImage ? movie.titleImage : "/images/user.png"}
                                 alt={movie?.name}
-                                className="w-full h-full object-cover rounded-lg"
+                                className="w-full h-full object-cover rounded-lg transition-transform duration-500 group-hover:scale-110"
                             />
-                            <div className="px-4 hoveres gap-6 text-center absolute bg-black bg-opacity-70 top-0 left-0 right-0 bottom-0">
+
+                            <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition duration-500 flex flex-col justify-center items-center gap-4 px-4">
                                 <button
-                                  onClick={() => LikeMovie(movie, dispatch, userInfo)}
-                                  disabled={isLiked || isLoading} 
-                                className={`w-12 h-12 flex justify-center items-center rounded-full
-                                ${isLiked(movie) ? "bg-subMain":"bg-white bg-opacity-30"}
-                                 text-white`}>
+                                    onClick={() => LikeMovie(movie, dispatch, userInfo)}
+                                    disabled={isLiked(movie) || isLoading}
+                                    className={`w-12 h-12 flex justify-center items-center rounded-full transition 
+          ${isLiked(movie) ? "bg-subMain" : "bg-white bg-opacity-30 hover:bg-opacity-50"} 
+          text-white`}
+                                >
                                     <FaHeart />
                                 </button>
                                 <Link
-                                    className="font-semibold text-xl text-white truncate w-full"
+                                    className="font-semibold text-xl text-white text-center truncate w-full"
                                     to={`/movie/${movie?._id}`}
                                 >
                                     {movie?.name}
@@ -70,6 +69,7 @@ const SwiperTop = ({ prevEl, nextEl, movies }) => {
                             </div>
                         </div>
                     </SwiperSlide>
+
                 ))
             }
         </Swiper>
@@ -88,10 +88,10 @@ function TopRated({ movies, isLoading }) {
             <div className="mt-10">
                 {
                     isLoading ? <Loader /> :
-                    movies?.length > 0 ?
-                        <SwiperTop nextEl={nextEl} prevEl={prevEl} movies={movies} />
-                        :
-                        <Empty message="It seems like we don't have any movies" />
+                        movies?.length > 0 ?
+                            <SwiperTop nextEl={nextEl} prevEl={prevEl} movies={movies} />
+                            :
+                            <Empty message="It seems like we don't have any movies" />
                 }
                 <div className='W-full px-1 flex-rows gap-6 pt-12'>
                     <button className={classNames} ref={(node) => setPrevEl(node)}>

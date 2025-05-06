@@ -1,25 +1,18 @@
-import React, {  Fragment } from "react";
+import React, { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { FaAngleDown, FaCheck } from "react-icons/fa";
-import { LanguageData, RatesData, TimesData, YearData } from "../Data/FilterData";
-
-
+import { LanguageData, RatesData } from "../Data/FilterData"; // Bỏ TimesData và YearData
 
 function Filters(props) {
   const {
-    categories ,
+    categories,
     category,
     setCategory,
     language,
     setLanguage,
-    year,
-    setYear,
-    times,
-    setTimes,
     rates,
     setRates,
-  }
-=props?.data;
+  } = props?.data;
 
   const Filter = [
     {
@@ -29,7 +22,6 @@ function Filters(props) {
         categories?.length > 0
           ? [{ title: "All Categories" }, ...categories]
           : [{ title: "No category found" }],
-
     },
     {
       value: language,
@@ -37,23 +29,11 @@ function Filters(props) {
       items: LanguageData,
     },
     {
-      value: year,
-      onChange: setYear,
-      items: YearData,
-    },
-    {
-      value: times,
-      onChange: setTimes,
-      items: TimesData,
-    },
-    {
       value: rates,
       onChange: setRates,
       items: RatesData,
     },
   ];
-
-
 
   return (
     <div className="my-6 bg-dry border text-dryGray border-gray-800 grid md:grid-cols-5 grid-cols-2 lg:gap-12 gap-2 rounded p-6">
@@ -77,16 +57,14 @@ function Filters(props) {
                   <Listbox.Option
                     key={i}
                     className={({ active }) =>
-                      `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? "bg-subMain text-white" : "text-main"
-                      }`
+                      `relative cursor-default select-none py-2 pl-10 pr-4 ${active ? "bg-subMain text-white" : "text-main"}`
                     }
                     value={iterm}
                   >
                     {({ selected }) => (
                       <>
                         <span
-                          className={`block truncate ${selected ? "font-semibold" : "font-normal"
-                            }`}
+                          className={`block truncate ${selected ? "font-semibold" : "font-normal"}`}
                         >
                           {iterm.title}
                         </span>

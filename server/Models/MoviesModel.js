@@ -26,9 +26,9 @@ const moviesSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    desc:{
+    desc: {
         type: String,
-        require: true
+        required: true
     },
     titleImage: {
         type: String,
@@ -51,13 +51,24 @@ const moviesSchema = mongoose.Schema({
         required: true
     },
     time: {
-        type: Number,
-        required: true
+        type: Number, // với phim bộ có thể là tổng thời lượng hoặc bỏ qua
     },
     video: {
-        type: String,
-        // required: true
+        type: String // chỉ dùng cho phim lẻ
     },
+    // isSeries: {
+    //     type: Boolean,
+    //     required: true,
+    //     default: false
+    // },
+    // episodes: [
+    //     {
+    //         title: { type: String, required: true },
+    //         videoUrl: { type: String, required: true },
+    //         duration: { type: Number },
+    //         episodeNumber: { type: Number, required: true }
+    //     }
+    // ],
     rate: {
         type: Number,
         required: true,
@@ -70,15 +81,14 @@ const moviesSchema = mongoose.Schema({
     },
     reviews: [reviewSchema],
     casts: [
-    {
-        name: { type: String, required: true },
-        image: { type: String, required: true },
-    },
-],
-},
-{
+        {
+            name: { type: String, required: true },
+            image: { type: String, required: true },
+        }
+    ]
+}, {
     timestamps: true
-}
-);
+});
+
 
 export default mongoose.model("Movies", moviesSchema);
