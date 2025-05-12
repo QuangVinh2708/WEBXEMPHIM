@@ -50,7 +50,7 @@ function App() {
       toast.error(isError || catError);
       dispatch({ type: "LIKE_MOVIE_RESET" });
     }
-    if(isSuccess){
+    if (isSuccess) {
       dispatch({ type: "LIKE_MOVIE_RESET" })
     }
   }, [dispatch, userInfo, isError, catError, isSuccess]);

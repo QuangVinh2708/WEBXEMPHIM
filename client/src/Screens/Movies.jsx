@@ -20,7 +20,7 @@ function MoviesPage() {
   const [rates, setRates] = useState(RatesData[0]);
   const [language, setLanguage] = useState(LanguageData[0]);
   const sameClass = "text-white py-2 px-4 rounded-full font-semibold border-2 border-subMain hover:bg-subMain transition-all";
-  
+
   // all movies
   const { isLoading, isError, movies, pages, page } = useSelector(
     (state) => state.getAllMovies
@@ -32,11 +32,11 @@ function MoviesPage() {
   // queries
   const queries = useMemo(() => {
     const query = {
-        category: category?.title === "All Categories" ? "" : category?.title,
-        // time: times?.title.replace(/\D/g, "") || "",
-        language: language?.title === "Sort By Language" ? "" : language?.title,
-        rate: rates?.title.replace(/\D/g, "") || "",
-        search: search ? search : "",
+      category: category?.title === "All Categories" ? "" : category?.title,
+      // time: times?.title.replace(/\D/g, "") || "",
+      language: language?.title === "Sort By Language" ? "" : language?.title,
+      rate: rates?.title.replace(/\D/g, "") || "",
+      search: search ? search : "",
     };
 
     return query;
@@ -85,12 +85,12 @@ function MoviesPage() {
     <Layout>
       <div className="min-height-screen container mx-auto px-2 my-8">
         <Filters data={datas} />
-        <p className="text-lg font-medium my-6">
+        {/* <p className="text-lg font-medium my-6">
           Total <span className="font-bold text-subMain">
             {movies ? movies?.length : 0}
           </span>{" "}
           items found {search && `for "${search}"`}
-        </p>
+        </p> */}
         {
           isLoading ? (
             <div className="w-full gap-6 flex-col min-h-screen">
@@ -107,33 +107,69 @@ function MoviesPage() {
                 </div>
 
                 {/* Loading more */}
-                <div className="w-full flex justify-between items-center gap-6 md:my-20 my-10">
+                <div className="w-full flex justify-center gap-4 my-10">
+                  {/* Previous */}
                   <button
                     onClick={prevPage}
                     disabled={page === 1}
-                    className={sameClass}>
-                    <TbPlayerTrackPrev className="text-xl" />
+                    className={`
+      flex items-center
+      px-5 py-2
+      bg-subMain text-white
+      rounded-full
+      shadow-md
+      disabled:opacity-50 disabled:cursor-not-allowed
+      hover:shadow-lg hover:bg-subMain/90
+      transition
+    `}
+                  >
+                    <TbPlayerTrackPrev className="mr-2 text-lg" />
+                    Trang trước
                   </button>
+
+                  {/* Next */}
                   <button
                     onClick={nextPage}
                     disabled={page === pages}
-                    className={sameClass}>
-                    <TbPlayerTrackNext className="text-xl" />
+                    className={`
+      flex items-center
+      px-5 py-2
+      bg-subMain text-white
+      rounded-full
+      shadow-md
+      disabled:opacity-50 disabled:cursor-not-allowed
+      hover:shadow-lg hover:bg-subMain/90
+      transition
+    `}
+                  >
+                    Trang sau
+                    <TbPlayerTrackNext className="ml-2 text-lg" />
                   </button>
                 </div>
+
               </>
             ) :
-            (
-              <div className="w-full gap-6 flex-col min-h-screen">
-                <div className="w-24 h-24 p-5 rounded-full mb-4 bg-dry text-subMain text-4xl flex-col">
-                  <RiMovie2Line />
+              (
+                <div className="w-full min-h-[50vh] flex flex-col justify-center items-center gap-4">
+                  {/* Icon lớn trong vòng tròn */}
+                  <div className="flex justify-center items-center w-32 h-32 rounded-full bg-gray-200 text-subMain text-5xl">
+                    <RiMovie2Line />
+                  </div>
+
+                  {/* Thông điệp chính */}
+                  <h2 className="text-2xl font-semibold text-white">
+                    Oops! Không tìm thấy phim nào
+                  </h2>
+
+                  {/* Thông điệp phụ */}
+                  <p className="text-gray-400 text-center max-w-md">
+                    Rất tiếc, chúng tôi không thể tìm thấy bất kỳ bộ phim nào khớp với bộ lọc của bạn.
+                    Hãy thử thay đổi thể loại hoặc xóa bộ lọc tìm kiếm.
+                  </p>
                 </div>
-                <p className="text-border text-sm">
-                  It seems like we don't have any movies.
-                </p>
-              </div>
-            )
-        }
+              )}
+
+    
       </div>
     </Layout>
   );

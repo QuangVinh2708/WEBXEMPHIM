@@ -19,7 +19,7 @@ function Login() {
         (state) => state.userLogin
     );
 
-    // Validate user
+    // Sử dụng react-hook-form với yupResolver để xử lý lỗi tự động
     const {
         register,
         handleSubmit,
@@ -28,9 +28,14 @@ function Login() {
         resolver: yupResolver(LoginValidation)
     });
 
-    // On submit
-    const onSubmit = (data) => {
-        dispatch(loginAction(data));
+    // Hàm xử lý khi submit
+    const onSubmit = async (data) => {
+        try {
+            // Gọi action đăng nhập
+            dispatch(loginAction(data));
+        } catch (error) {
+            toast.error("Đăng nhập không thành công!");
+        }
     };
 
     useEffect(() => {
@@ -49,8 +54,7 @@ function Login() {
     }, [userInfo, isSuccess, isError, navigate, dispatch]);
 
     return (
-        <Layout hideFooter={true} transparentNav={true} >
-
+        <Layout hideFooter={true} transparentNav={true} hideNav={true} >
             <div
                 className="w-full min-h-screen flex-colo bg-cover bg-center bg-fixed "
                 style={{ backgroundImage: 'url("https://res.cloudinary.com/dwfmpiozq/image/upload/v1743692824/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn_oopzdx.png")' }}

@@ -50,14 +50,16 @@ const registerUser = asyncHandler(async (req, res) => {
 //@desc Login user
 // @route POST /api/users/
 // @access Public
-const loginUser = asyncHandler (async (req, res)=> {
+const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
+
     try {
-        //find user in DB 
-        const user = await User.findOne({email});
-        //if user exists compare password with hased password then send user data and token to client
-        if (user && (await bcrypt.compare(password, user.password))){
-            res.json ({
+        // Tìm người dùng trong cơ sở dữ liệu
+        const user = await User.findOne({ email });
+
+        // Nếu tìm thấy người dùng, so sánh mật khẩu đã mã hóa
+        if (user && (await bcrypt.compare(password, user.password))) {
+            return res.json({
                 _id: user._id,
                 fullName: user.fullName,
                 email: user.email,
@@ -65,15 +67,17 @@ const loginUser = asyncHandler (async (req, res)=> {
                 isAdmin: user.isAdmin,
                 token: generateToken(user._id),
             });
-            //if user not found or password not match send error message
-        }   else{
-            res.status(401);
-            throw new Error("Invalid email or password"); 
-        }
-    }   catch (error){
-        res.status(400).json({message: error.message});
+        } 
+        
+        // Nếu không tìm thấy người dùng hoặc mật khẩu không khớp
+        return res.status(401).json({ message: "Email hoặc mật khẩu không đúng" });
+
+    } catch (error) {
+        console.error("Lỗi đăng nhập:", error.message);
+        return res.status(500).json({ message: "Lỗi máy chủ, vui lòng thử lại sau" });
     }
 });
+
 
 //**** PRIVATE CONTROLLERS ****
 

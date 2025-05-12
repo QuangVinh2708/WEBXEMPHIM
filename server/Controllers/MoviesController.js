@@ -1,4 +1,4 @@
-import { Movies } from "../Data/MovieData.js";
+//import { Movies } from "../Data/MovieData.js";
 import Movie from "../Models/MoviesModel.js";
 import asyncHandler from "express-async-handler";
 
@@ -34,7 +34,7 @@ const getMovies = asyncHandler(async (req, res) => {
 
         // load more movies functionality
         const page = Number(req.query.pageNumber) || 1;   // if pageNumber is not provided in query  we set it to 
-        const limit = 20;
+        const limit = 100;
         const skip = (page - 1) * limit; // skip 2 movies per page 
 
         // find movies by query, skip and limit

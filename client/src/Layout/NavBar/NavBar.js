@@ -44,7 +44,9 @@ function NavBar({ transparent, absolute }) {
 
                 {/* MENU */}
                 <div className='col-span-6 font-medium text-sm hidden lg:flex gap-8 items-center'>
+                    <NavLink to="/" className={Hover}>Trang chủ</NavLink>
                     <NavLink to="/movies" className={Hover}>Phim</NavLink>
+                    <NavLink to="/favorites" className={Hover}>Danh sách của tôi</NavLink>
                     <NavLink to="/about-us" className={Hover}>Thông tin</NavLink>
                     <NavLink to="/contact-us" className={Hover}>Liên hệ</NavLink>
                 </div>
@@ -87,15 +89,15 @@ function NavBar({ transparent, absolute }) {
                         )}
                     </NavLink>
 
-                    {/* FAVORITES */}
-                    <NavLink to="/favorites" className={Hover}>
+                    {/* NOTIFICATION */}
+                    {/* <NavLink to="/favorites" className={Hover}>
                         <div className="relative">
                             <FaHeart className="w-6 h-6 text-white" />
                             <div className="w-5 h-5 flex-colo rounded-full text-xs bg-subMain text-white absolute -top-2 -right-3">
                                 {likedMovies.length || 0}
                             </div>
                         </div>
-                    </NavLink>
+                    </NavLink> */}
                 </div>
             </div>
 

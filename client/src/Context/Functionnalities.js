@@ -22,8 +22,6 @@ const LikeMovie = (movie, dispatch, userInfo) => {
 };
 
 
-
-
 const DownloadVideo = async (videoUrl, setprogress) => {
     const { data } = await axios({
       url: videoUrl,
