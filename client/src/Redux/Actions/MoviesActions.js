@@ -155,7 +155,7 @@ export const createMovieAction = (movie) => async (dispatch, getState) => {
       payload: response,
     });
     
-    toast.success("Movie created successfully");
+    toast.success("Phim đã đăng thành công");
     dispatch(deleteAllCastAction());
   } catch (error) {
     ErrorsAction(error, dispatch, moviesConstants.CREATE_MOVIE_FAIL);
