@@ -108,7 +108,7 @@ function NavBar({ transparent, absolute }) {
               </li>
               <li>
                 <button
-                  onClick={() => { navigate('/plan'); setShowMenu(false) }}
+                  onClick={() => { navigate('/account-plans'); setShowMenu(false) }}
                   className="w-full text-left px-4 py-2 hover:bg-gray-700"
                 >
                   Gói tài khoản

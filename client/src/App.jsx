@@ -21,6 +21,7 @@ import AddMovie from './Screens/Dashboard/Admin/AddMovie';
 import ScrollOnTop from './ScrollOnTop';
 import DrawerContext from './Context/DrawerContext';
 import ToastContainer from './Components/Notfications/ToastContainer';
+import AccountPlans from './Screens/Dashboard/AccountPlans';
 import { AdminProtectedRouter, ProtectedRouter } from './ProtectedRouter';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCategoriesAction } from './Redux/Actions/CategoriesActions';
@@ -78,6 +79,8 @@ function App() {
               <Route path='/profile' element={<Profile />} />
               <Route path='/password' element={<Password />} />
               <Route path='/favorites' element={<FavoritesMovies />} />
+              <Route path='/account-plans' element={< AccountPlans/>} />
+
               {/************ ADMIN ROUTES ************/}
               <Route element={<AdminProtectedRouter />}>
                 <Route path='/movieslist' element={<MoviesList />} />

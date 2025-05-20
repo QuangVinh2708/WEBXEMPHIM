@@ -82,6 +82,11 @@ function SideBar({children}) {
             name:"Thay đổi mật khẩu",
             link :"/password",
             icon : RiLockPasswordLine
+        },
+        {
+            name: "Gói tài khoản",
+            link: "/account-plans",
+            icon: RiMovie2Fill 
         }
     ] : []
        ;
