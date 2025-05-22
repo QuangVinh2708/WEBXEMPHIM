@@ -39,7 +39,7 @@ function Profile() {
 
     // delete profile
     const deleteProfile = () => {
-        window.confirm("Are you sure you want to delete your profile?") && 
+        window.confirm("Bạn thật sự vô hiệu tài khoản ?") && 
         dispatch(deleteProfileAction());
     };
 

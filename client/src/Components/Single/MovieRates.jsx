@@ -13,12 +13,12 @@ import { InlineError } from '../Notfications/Error';
 import { Link } from 'react-router-dom';
 import { reviewMovieAction } from '../../Redux/Actions/MoviesActions';
 const Ratings = [
-    { title: "0 - Poor", value: 0 },
-    { title: "1 - Fair", value: 1 },
-    { title: "2 - Good", value: 2 },
-    { title: "3 - Very Good", value: 3 },
-    { title: "4 - Excellent", value: 4 },
-    { title: "5 - Masterpiece", value: 5 },
+  { title: "0 - Quá tệ 🤢",        value: 0 },
+  { title: "1 - Hơn mỗi chữ tệ  🥱",      value: 1 },
+  { title: "2 - Cũng cũng 😏",         value: 2 },
+  { title: "3 - Đáng để thử 🤤",     value: 3 },
+  { title: "4 - Thua mỗi 5 sao 🔥", value: 4 },
+  { title: "5 - Đỉnh nóc kịch trần  💯",     value: 5 },
 ];
 
 function MovieRates({ movie }) {
@@ -66,7 +66,7 @@ function MovieRates({ movie }) {
                         Hãy cảm nhận bộ phim bạn đã xem nào </p>
                     <div className="text-sm w-full">
                         <Select
-                            label="Select Rating"
+                            label="Chọn đánh giá"
                             options={Ratings}
                             name="rating"
                             register={{ ...register("rating") }}
@@ -113,7 +113,7 @@ function MovieRates({ movie }) {
 
                 {/* Reviews */}
                 <div className="col-span-3 w-full flex flex-col gap-6">
-                    <h3 className="text-xl text-text font-semibold">Reviews ({movie?.numberOfReviews})</h3>
+                    <h3 className="text-xl text-text font-semibold">Danh sách bình luận  ({movie?.numberOfReviews})</h3>
                     <div className="w-full flex flex-col bg-main gap-6 rounded-lg md:p-12 p-6 h-header overflow-y-scroll">
                         {
                             movie?.reviews?.length > 0 ? movie?.reviews?.map((review) => (

@@ -17,7 +17,7 @@ const loginAction = (datas) => async (dispatch) => {
 
         const response = await userApi.loginService(datas);
         dispatch({ type: userConstants.USER_LOGIN_SUCCESS, payload: response });
-        toast.success("Login successful");
+        toast.success("Đăng nhập thành công");
     } catch (error) {
         ErrorsAction(error, dispatch, userConstants.USER_LOGIN_FAIL);
     }
@@ -31,7 +31,7 @@ const registerAction = (datas) => async (dispatch) => {
         const response = await userApi.registerService(datas);
         dispatch({ type: userConstants.USER_REGISTER_SUCCESS, payload: response });
         dispatch({ type: userConstants.USER_LOGIN_SUCCESS, payload: response });
-        toast.success("Registration successful");
+        toast.success("Đăng ký thành công");
     } catch (error) {
         ErrorsAction(error, dispatch, userConstants.USER_REGISTER_FAIL);
     }
@@ -63,7 +63,7 @@ const logoutAction = () => (dispatch) => {
     dispatch({ type: categoriesConstants.UPDATE_CATEGORY_RESET });
     dispatch({ type: categoriesConstants.DELETE_CATEGORY_RESET });
 
-    toast.success("Logged out successfully");
+    toast.success("Đăng xuất thành công");  
 };
 
 // update profile action
@@ -72,7 +72,7 @@ const updateProfileAction = (user) => async (dispatch, getState) => {
         dispatch({ type: userConstants.USER_UPDATE_PROFILE_REQUEST });
         const response = await userApi.updateProfileService(user, getToken(getState));
         dispatch({ type: userConstants.USER_UPDATE_PROFILE_SUCCESS, payload: response });
-        toast.success("Profile updated");
+        toast.success("Tài khoản đã được cập nhật thành công");
         dispatch({ type: userConstants.USER_LOGIN_SUCCESS, payload: response });
     } catch (error) {
         ErrorsAction(error, dispatch, userConstants.USER_UPDATE_PROFILE_FAIL);

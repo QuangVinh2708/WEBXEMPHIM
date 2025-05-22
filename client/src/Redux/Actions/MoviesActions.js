@@ -90,7 +90,7 @@ export const reviewMovieAction = ({id, review}) => async (dispatch, getState) =>
         type: moviesConstants.CREATE_REVIEW_SUCCESS,
         payload: response,
       });
-      toast.success("Review added successfully");
+      toast.success("Đánh giá phim thành công");
       dispatch({ type: moviesConstants.CREATE_REVIEW_RESET });
       dispatch(getMovieByIdAction(id));
     } catch (error) {
@@ -113,7 +113,7 @@ export const deleteMovieAction = (id) => async (dispatch, getState) => {
         payload: response,
       });
       
-      toast.success("Movie deleted successfully");
+      toast.success("Phim đã xóa thành công");
       dispatch(getAllMoviesAction({}));
     } catch (error) {
       ErrorsAction(error, dispatch, moviesConstants.DELETE_MOVIE_FAIL);
@@ -133,7 +133,7 @@ export const deleteMovieAction = (id) => async (dispatch, getState) => {
         payload: response,
       });
       
-      toast.success("All movies deleted successfully");
+      toast.success("Toàn bộ phim đã xóa thành công");
       dispatch(getAllMoviesAction({}));
     } catch (error) {
       ErrorsAction(error, dispatch, moviesConstants.DELETE_ALL_MOVIES_FAIL);
@@ -203,7 +203,7 @@ export const updateMovieAction = (id, movie) => async (dispatch, getState) => {
           payload: response,
       });
       
-      toast.success("Movie updated successfully");
+      toast.success("Phim đã cập nhật thành công");
       dispatch(getMovieByIdAction(id));
       dispatch(deleteAllCastAction());
   } catch (error) {

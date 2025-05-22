@@ -55,9 +55,9 @@ function Footer() {
                     <div className="pb-6 col-span-1 md:col-span-2 lg:col-span-3 flex flex-col items-start justify-start">
                         <Link to="/">
                             <img 
-                                src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1726675657/Logo_xun4sb.png" 
+                                src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1747808765/14344421-e223-43e7-9a46-072d81888d2f.png-removebg-preview_amakim.png" 
                                 alt="Logo" 
-                                className="w-24 object-contain mb-4 transition-all duration-300 ease-in-out hover:scale-105"
+                                className="w-15 object-contain mb-4 transition-all duration-300 ease-in-out hover:scale-105"
                             />
                         </Link>
                         <p className="text-sm text-white mt-3 leading-6">

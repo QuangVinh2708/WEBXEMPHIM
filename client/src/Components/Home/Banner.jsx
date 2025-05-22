@@ -48,7 +48,7 @@ const Swipper = ({ sameClass, movies }) => {
                                 to={`/movie/${movie?._id}`}
                                 className="bg-subMain hover:text-main transitions text-white px-8 py-3 rounded font-medium sm:text-sm text-xs"
                             >
-                                Watch
+                                XEM THÔNG TIN
                             </Link>
                             <button
                                 onClick={() => LikeMovie(movie, dispatch, userInfo)}

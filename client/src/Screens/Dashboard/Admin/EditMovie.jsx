@@ -223,11 +223,11 @@ function EditMovie() {
                             {/*MOVIE VIDEO*/}
                             <div className="w-full">
                                 <label className="text-border font-semibold text-sm mb-2 block">
-                                    Link nhúng video (YouTube embed)
+                                    Link nhúng video 
                                 </label>
                                 <Input
                                     label=""
-                                    placeholder="https://www.youtube.com/embed/abc123"
+                                    placeholder="https://...."
                                     type="text"
                                     bg={true}
                                     name="video"
@@ -264,7 +264,7 @@ function EditMovie() {
                                     <button
                                         onClick={() => setModalOpen(true)}
                                         className='w-full py-4 bg-main border border-subMain border-dashed text-white rounded'>
-                                        Add Cast
+                                        Thêm diễn viên 
                                     </button>
                                     <span className="text-border text-xs">
                                         if you add new casts the previous casts will be deleted. So you should add them again

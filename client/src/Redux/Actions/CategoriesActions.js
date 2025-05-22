@@ -20,7 +20,7 @@ export const createCategoryAction = (title) => async (dispatch,getState) => {
         dispatch({ type: CategoriesConstants.CREATE_CATEGORY_REQUEST });
         await categoriesAPIs.createCategoryService(title,tokenProtection(getState));
         dispatch({ type: CategoriesConstants.CREATE_CATEGORY_SUCCESS });
-        toast.success("Category created successfully");
+        toast.success("Đã tạo thể loại thành công");
     } catch (error) {
         ErrorsAction(error, dispatch, CategoriesConstants.CREATE_CATEGORY_FAIL);
     }
@@ -35,7 +35,7 @@ export const updateCategoryAction = (id, title) => async (dispatch, getState) =>
             tokenProtection(getState)
         );
         dispatch({ type: CategoriesConstants.UPDATE_CATEGORY_SUCCESS });
-        toast.success("Category updated successfully");
+        toast.success("Thể loại đã được cập nhật thành công");
         dispatch(getAllCategoriesAction())
     } catch (error) {
         ErrorsAction(error, dispatch, CategoriesConstants.UPDATE_CATEGORY_FAIL);
@@ -48,7 +48,7 @@ export const deleteCategoryAction = (id) => async (dispatch, getState) => {
         dispatch({ type: CategoriesConstants.DELETE_CATEGORY_REQUEST });
         await categoriesAPIs.deleteCategoryService(id, tokenProtection(getState));
         dispatch({ type: CategoriesConstants.DELETE_CATEGORY_SUCCESS });
-        toast.success("Category deleted successfully");
+        toast.success("Xóa thể loại thành công");
         dispatch(getAllCategoriesAction())
     } catch (error) {
         ErrorsAction(error, dispatch, CategoriesConstants.DELETE_CATEGORY_FAIL);

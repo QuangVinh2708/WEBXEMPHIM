@@ -2,6 +2,7 @@ import asyncHandler from "express-async-handler"
 import User from "../Models/UserModels.js"
 import bcrypt from "bcryptjs"
 import { generateToken } from "../middlewares/Auth.js";
+import AccountPlan from '../Models/AccountPlansModel.js';
 
 // @desc Register user
 // @route POST /api/users/
@@ -236,7 +237,7 @@ const deleteLikedMovies = asyncHandler(async (req, res) => {
         if (user) {
             user.likedMovies = [];
             await user.save();
-            res.json({ message: "Your favorites liked movies deleted successfully" });
+            res.json({ message: "Danh sách yêu thích của bạn đã xóa toàn bộ " });
 
         } 
         // else send error message
@@ -289,6 +290,43 @@ const deleteUser = asyncHandler(async (req, res) => {
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
+});
+
+// @desc   User chọn gói tài khoản
+// @route  POST /api/users/:userId/subscribe
+// @access Private
+export const subscribePlan = asyncHandler(async (req, res) => {
+  const { planId } = req.body;
+  const userId      = req.params.userId;
+
+  // 1) Kiểm tra plan tồn tại
+  const plan = await AccountPlan.findById(planId);
+  if (!plan) {
+    res.status(404);
+    throw new Error('Plan not found');
+  }
+
+  // 2) Cập nhật user
+  const user = await User.findById(userId);
+  if (!user) {
+    res.status(404);
+    throw new Error('User not found');
+  }
+
+  user.plan = plan._id;
+  user.isAccountActive = true;
+  await user.save();
+
+  res.json({
+    message: 'Subscribed successfully',
+    user: {
+      _id: user._id,
+      fullName: user.fullName,
+      email: user.email,
+      plan: plan.name,
+      isAccountActive: user.isAccountActive,
+    }
+  });
 });
 
 export { registerUser,

@@ -15,56 +15,58 @@ function MoviesPage() {
   const { search } = useParams();
   const dispatch = useDispatch();
 
-  // filter states
-  const [category, setCategory] = useState({ title: "All Categories" });
-  const [year, setYear]       = useState(YearData[0]);
-  const [times, setTimes]     = useState(TimesData[0]);
-  const [rates, setRates]     = useState(RatesData[0]);
-  const [language, setLanguage] = useState(LanguageData[0]);
+  // --- Pagination state ---
+  const [page, setPage] = useState(1);
+  const pageSize = 30;
 
-  // redux state
-  const { isLoading, isError, movies = [], page } = useSelector(
+  // --- Filter states ---
+  const [category, setCategory]   = useState({ title: "All Categories" });
+  const [year, setYear]           = useState(YearData[0]);
+  const [times, setTimes]         = useState(TimesData[0]);
+  const [rates, setRates]         = useState(RatesData[0]);
+  const [language, setLanguage]   = useState(LanguageData[0]);
+
+  // --- Redux state ---
+  const { isLoading, isError, movies = [] } = useSelector(
     (state) => state.getAllMovies
   );
   const { categories } = useSelector((state) => state.categoryGetAll);
 
-  // page size and slicing
-  const pageSize = 30;
+  // --- Compute paged slice ---
   const moviesToShow = useMemo(() => {
     const start = (page - 1) * pageSize;
     return movies.slice(start, start + pageSize);
   }, [movies, page]);
 
-  // compute total pages if API doesn't provide it
   const totalPages = useMemo(
     () => Math.ceil(movies.length / pageSize),
     [movies]
   );
 
-  // build query object
+  // --- Build query (no pageNumber/pageSize for client-side) ---
   const queries = useMemo(() => ({
     category: category.title === "All Categories" ? "" : category.title,
-    language: language.title === "Sort By Language" ? "" : language.title,
-    rate: rates.title.replace(/\D/g, "") || "",
-    search: search || "",
-    // you could also pass pageSize here if your API supports it
+    language: language.title === "Sort By Language"  ? "" : language.title,
+    rate:     rates.title.replace(/\D/g, "") || "",
+    search:   search || "",
   }), [category, language, rates, search]);
 
-  // fetch movies whenever filters or errors change
+  // --- Fetch on filters change (one-time fetch all) ---
   useEffect(() => {
     if (isError) toast.error(isError);
     dispatch(getAllMoviesAction(queries));
+    setPage(1); // reset về trang 1 khi filters/search thay đổi
   }, [dispatch, isError, queries]);
 
-  // pagination handlers
+  // --- Handlers ---
   const nextPage = () => {
-    dispatch(getAllMoviesAction({ ...queries, pageNumber: page + 1 }));
+    if (page < totalPages) setPage((p) => p + 1);
   };
   const prevPage = () => {
-    dispatch(getAllMoviesAction({ ...queries, pageNumber: page - 1 }));
+    if (page > 1) setPage((p) => p - 1);
   };
 
-  // pass down to Filters component
+  // --- Props cho Filters ---
   const filterProps = {
     categories, category, setCategory,
     language, setLanguage,
@@ -79,32 +81,37 @@ function MoviesPage() {
         <Filters data={filterProps} />
 
         {isLoading ? (
-          <div className="w-full gap-6 flex-col min-h-screen">
+          <div className="w-full flex justify-center items-center min-h-screen">
             <Loader />
           </div>
         ) : movies.length > 0 ? (
           <>
+            {/* Movie Grid */}
             <div className="grid sm:mt-10 mt-6 xl:grid-cols-4 2xl:grid-cols-5 lg:grid-cols-3 sm:grid-cols-2 gap-6">
               {moviesToShow.map((movie, idx) => (
-                <Movie key={idx} movie={movie} />
+                <Movie key={movie._id || idx} movie={movie} />
               ))}
             </div>
 
-            {/* Pagination controls */}
-            <div className="w-full flex justify-center gap-4 my-10">
+            {/* Pagination Controls */}
+            <div className="w-full flex justify-center items-center gap-4 my-10">
               <button
                 onClick={prevPage}
                 disabled={page === 1}
-                className="flex items-center px-5 py-2 bg-subMain text-white rounded-full shadow-md disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:bg-subMain/90 transition"
+                className="flex items-center px-5 py-2 bg-subMain text-white rounded-full shadow-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-subMain/90 transition"
               >
                 <TbPlayerTrackPrev className="mr-2 text-lg" />
                 Trang trước
               </button>
 
+              <span className="text-white">
+                Trang {page} / {totalPages}
+              </span>
+
               <button
                 onClick={nextPage}
                 disabled={page === totalPages}
-                className="flex items-center px-5 py-2 bg-subMain text-white rounded-full shadow-md disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:bg-subMain/90 transition"
+                className="flex items-center px-5 py-2 bg-subMain text-white rounded-full shadow-md disabled:opacity-50 disabled:cursor-not-allowed hover:bg-subMain/90 transition"
               >
                 Trang sau
                 <TbPlayerTrackNext className="ml-2 text-lg" />
