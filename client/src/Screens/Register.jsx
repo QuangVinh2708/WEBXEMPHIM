@@ -52,7 +52,7 @@ function Register() {
     }, [userInfo, isSuccess, isError, navigate, dispatch]);
 
     return (
-        <Layout hideFooter={true} transparentNav={true}>
+        <Layout hideFooter={true} transparentNav={true} hideNav={true}>
             <div
                 className="w-full h-screen flex-colo bg-cover bg-center bg-no-repeat"
                 style={{ backgroundImage: 'url("https://res.cloudinary.com/dwfmpiozq/image/upload/v1743692824/Thi%E1%BA%BFt_k%E1%BA%BF_ch%C6%B0a_c%C3%B3_t%C3%AAn_oopzdx.png")' }}
