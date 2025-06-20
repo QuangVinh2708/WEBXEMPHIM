@@ -5,7 +5,7 @@ import User from "../Models/UserModels.js"
 // @desc Authenticated user & get token
 const generateToken = (id) => {
     return jwt.sign( { id }, process.env.JWT_SECRET, {
-        expiresIn: "1h",
+        expiresIn: "5h",
     });
 };
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import Footer from './Footer/Footer';
-import NavBar from './NavBar/NavBar';
-import MobileFooter from './Footer/MobileFooter';
+import Footer from './Footer/Footer.jsx';
+import NavBar from './NavBar/NavBar.jsx';
+import MobileFooter from './Footer/MobileFooter.jsx';
 
 function Layout({ children, hideFooter, transparentNav, hideNav }) {
     return (

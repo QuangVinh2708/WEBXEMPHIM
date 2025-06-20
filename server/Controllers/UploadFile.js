@@ -45,7 +45,7 @@ Uploadrouter.post("/", upload.single("file"), async (req, res) => {
       blobStream.end(file.buffer);
     } else {
       // Khi không có file
-      return res.status(400).json({ message: "Please upload a file" });
+      return res.status(400).json({ message: "Hãy upload file " });
     }
   } catch (error) {
     // Xử lý các lỗi khác

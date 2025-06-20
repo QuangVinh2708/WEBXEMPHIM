@@ -64,7 +64,7 @@ function Login() {
                     className="w-full 2xl:w-2/5 gap-8 flex-colo p-8 sm:p-14 md:w-3/5 bg-black rounded-lg border-gray-900 bg-opacity-60"
                 >
                     <img
-                        src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1726675657/Logo_xun4sb.png"
+                        src="https://res.cloudinary.com/dwfmpiozq/image/upload/v1747808765/14344421-e223-43e7-9a46-072d81888d2f.png-removebg-preview_amakim.png"
                         alt="logo"
                         className="w-full h-20 object-contain"
                     />
